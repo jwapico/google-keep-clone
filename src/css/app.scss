@@ -10,7 +10,7 @@ body {
   .home__header {
     display: flex;
     align-items: center;
-    padding-block: .4em;
+    height: 13vh;
     border-bottom: 1px solid #727272a8;
 
     .ham-logo-keep-container {
@@ -21,18 +21,32 @@ body {
       svg {
         font-size: 0px;
         width: 25px;
-        margin-inline-end: 1.3rem;
+        fill: #b6b6b6;
+        transition: all .3s;
+        position: relative;
+        top: 2px;
+
+        &:hover {
+          cursor: pointer;
+          fill: white;
+          transform: scale(110%);
+        }
       }
 
       .logo {
         width: 2rem;
-        margin-inline-end: 1.3rem;
+        margin-inline: 1.3rem;
       }
   
-      h1 {
-        font-weight: 500;
-        font-size: 22px;
-        margin-inline-end: 1.3rem;
+      a {
+        text-decoration: none;
+        color: white;
+
+        h1 {
+          font-weight: 500;
+          font-size: 22px;
+          margin-inline-end: 1.3rem;
+        } 
       }
     }
 
@@ -63,6 +77,8 @@ body {
   }
 
   nav {
+    width: max-content;
+
     .nav__link {
       display: flex;
       align-items: center;
@@ -72,6 +88,7 @@ body {
       width: 250px;
       border-top-right-radius: 50px;
       border-bottom-right-radius: 50px;
+      transition: background-color .3s;
 
       svg {
         fill: #e2e2e2;
@@ -104,6 +121,42 @@ body {
 
       &.selected {
         background-color: #41331c;
+
+        &:hover {
+          background-color: #584424;
+        }
+      }
+
+      &:hover {
+        background-color: #45464b96;
+      }
+    }
+  }
+
+  main {
+    display: flex;
+
+    .routes {
+      width: 100%;
+
+      .route {
+        height: 87vh;
+      }
+
+      .Notes {
+        border: 1px solid red;
+      }
+
+      .Labels {
+        border: 1px solid orange;
+      }
+
+      .Archive {
+        border: 1px solid yellow;
+      }
+
+      .Trash {
+        border: 1px solid green;
       }
     }
   }

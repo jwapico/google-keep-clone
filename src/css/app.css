@@ -16,7 +16,7 @@ body .home__header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-block: .4em;
+  height: 13vh;
   border-bottom: 1px solid #727272a8;
 }
 
@@ -33,17 +33,31 @@ body .home__header .ham-logo-keep-container {
 body .home__header .ham-logo-keep-container svg {
   font-size: 0px;
   width: 25px;
-  -webkit-margin-end: 1.3rem;
-          margin-inline-end: 1.3rem;
+  fill: #b6b6b6;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  position: relative;
+  top: 2px;
+}
+
+body .home__header .ham-logo-keep-container svg:hover {
+  cursor: pointer;
+  fill: white;
+  -webkit-transform: scale(110%);
+          transform: scale(110%);
 }
 
 body .home__header .ham-logo-keep-container .logo {
   width: 2rem;
-  -webkit-margin-end: 1.3rem;
-          margin-inline-end: 1.3rem;
+  margin-inline: 1.3rem;
 }
 
-body .home__header .ham-logo-keep-container h1 {
+body .home__header .ham-logo-keep-container a {
+  text-decoration: none;
+  color: white;
+}
+
+body .home__header .ham-logo-keep-container a h1 {
   font-weight: 500;
   font-size: 22px;
   -webkit-margin-end: 1.3rem;
@@ -87,6 +101,12 @@ body .home__header .fa-gear {
   color: #99999a;
 }
 
+body nav {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
 body nav .nav__link {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -100,6 +120,8 @@ body nav .nav__link {
   width: 250px;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
 }
 
 body nav .nav__link svg {
@@ -138,5 +160,43 @@ body nav .nav__link.closed p {
 
 body nav .nav__link.selected {
   background-color: #41331c;
+}
+
+body nav .nav__link.selected:hover {
+  background-color: #584424;
+}
+
+body nav .nav__link:hover {
+  background-color: #45464b96;
+}
+
+body main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body main .routes {
+  width: 100%;
+}
+
+body main .routes .route {
+  height: 87vh;
+}
+
+body main .routes .Notes {
+  border: 1px solid red;
+}
+
+body main .routes .Labels {
+  border: 1px solid orange;
+}
+
+body main .routes .Archive {
+  border: 1px solid yellow;
+}
+
+body main .routes .Trash {
+  border: 1px solid green;
 }
 /*# sourceMappingURL=app.css.map */

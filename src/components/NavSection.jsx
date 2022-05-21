@@ -3,7 +3,7 @@ import LinkItem from "./LinkItem"
 
 function NavSection(props) {
   return ( 
-    <nav>
+    <nav onMouseOver={props.onMouseOver}>
       {props.linkValues.map(linkVal => (
         <LinkItem 
           key={linkVal.id}

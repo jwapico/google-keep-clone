@@ -6,6 +6,10 @@ import './css/app.css';
 
 import Header from "./components/Header"
 import NavSection from './components/NavSection';
+import Labels from "./components/Labels"
+import Archive from "./components/Archive"
+import Trash from "./components/Trash"
+import Notes from "./components/Notes"
 
 
 
@@ -22,7 +26,12 @@ function App() {
     setIsNavOpen(prevIsOpen => !prevIsOpen)
   }
 
+  function openNav() {
+    setIsNavOpen(true)
+  }
+
   function changeIsSelected(id) {
+    openNav()
     setSectionLinks(prevLinks => {
       return prevLinks.map(link => {
         return link.id === id ? {...link, isSelected: true} : {...link, isSelected: false} 
@@ -33,21 +42,27 @@ function App() {
   return (
     <>
       <Header toggleIsNavOpen={toggleIsNavOpen}/>
-      <NavSection isNavOpen={isNavOpen} linkValues={sectionLinks} changeIsSelected={changeIsSelected}/>
+
+      <main>
+        <NavSection
+          isNavOpen={isNavOpen}
+          linkValues={sectionLinks}
+          changeIsSelected={changeIsSelected}
+          onMouseOver={openNav}
+        />
+        <div className="routes">
+          <div className={`route ${sectionLinks.filter(link => link.isSelected)[0].text}`}>
+            <Routes>
+              <Route exact path="/" element={<Notes />}></Route>
+              <Route path="/labels" element={<Labels />}></Route>
+              <Route path="/archive" element={<Archive />}></Route>
+              <Route path="/trash" element={<Trash />}></Route>
+            </Routes>
+          </div>
+        </div>
+      </main>
     </>
   );
 }
 
 export default App;
-
-{/* <Link to="/">Home</Link>
-<Link to="/labels">Labels</Link>
-<Link to="/archive">Archive</Link>
-<Link to="/trash">Trash</Link>
-
-<Routes>
-  <Route exact path='/'></Route>
-  <Route path='/labels' element={<Labels prop="hi"/>}></Route>
-  <Route path='/archive'></Route>
-  <Route path='/trash'></Route>
-</Routes> */}

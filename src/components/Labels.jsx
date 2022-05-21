@@ -2,7 +2,7 @@ import React from 'react';
 
 function Labels(props) {
   return ( 
-    <h1>{props.prop}</h1>
+    <h1>Labels</h1>
   );
 }
 
