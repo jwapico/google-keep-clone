@@ -8,10 +8,10 @@ function Notes(props) {
 
   return ( 
     <>
-      {isNoteFieldOpen ? <NoteField /> : <input type="text" placeholder='Take a note...' className='take-a-note' onFocus={() => {setIsNoteFieldOpen(true)}}/>}
+      {isNoteFieldOpen ? <NoteField addNote={props.addNote} closeNoteField={() => setIsNoteFieldOpen(false)}/> : <input type="text" placeholder='Take a note...' className='take-a-note' onFocus={() => {setIsNoteFieldOpen(true)}}/>}
       {notes.length 
-        ? <div>
-            <Note />
+        ? <div className='notes-container'>
+            {notes.map((note, index) => <Note key={index} note={note}/>)}
           </div>
         : <div className='empty-notes'>
             <i className="fa-solid fa-lightbulb"></i>

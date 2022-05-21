@@ -1,17 +1,33 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
-function NoteField() {
+function NoteField(props) {
+  const [title, setTitle] = useState("")
+  const [noteText, setNoteText] = useState("")
+
   const titleInput = useRef()
-
   useEffect(() => {titleInput.current.focus()}, [])
+
+  function onSubmit(event) {
+    event.preventDefault()
+    props.closeNoteField()
+    props.addNote({
+      title: title,
+      noteText: noteText
+    })
+  }
+
+  function onClose(event) {
+    event.preventDefault()
+    props.closeNoteField()
+  }
 
   return ( 
     <form className='note-field'>
-      <input type="text" placeholder='Title' ref={titleInput}/>
-      <textarea cols="30" rows="3" placeholder='Take a note...' className='take-note'></textarea>
+      <input type="text" placeholder='Title' ref={titleInput} value={title} onChange={e => setTitle(e.target.value)}/>
+      <textarea cols="30" rows="1" placeholder='Take a note...' className='take-note' value={noteText} onChange={e => setNoteText(e.target.value)}></textarea>
       <div className="note-field-buttons">
-        <button type='submit'>Create Note</button>
-        <button>Close</button>
+        <button type='submit' onClick={(e) => onSubmit(e)}>Create Note</button>
+        <button onClick={(e) => onClose(e)}>Close</button>
       </div>
     </form>
   );

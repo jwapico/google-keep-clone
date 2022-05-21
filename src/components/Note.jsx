@@ -2,7 +2,10 @@ import React from 'react';
 
 function Note(props) {
   return ( 
-    <p>I'm a note!</p>
+    <div className='note'>
+      <h2>{props.note.title}</h2>
+      <p>{props.note.noteText}</p>
+    </div>
   );
 }
 

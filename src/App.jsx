@@ -40,6 +40,10 @@ function App() {
     })
   }
 
+  function addNote(note) {
+    setNotes(prevNotes => [note, ...prevNotes])
+  }
+
   return (
     <>
       <Header toggleIsNavOpen={toggleIsNavOpen}/>
@@ -54,7 +58,7 @@ function App() {
         <div className="routes">
           <div className={`route ${sectionLinks.filter(link => link.isSelected)[0].text}`}>
             <Routes>
-              <Route exact path="/" element={<Notes notes={notes}/>}></Route>
+              <Route exact path="/" element={<Notes notes={notes} addNote={addNote}/>}></Route>
               <Route path="/labels" element={<Labels />}></Route>
               <Route path="/archive" element={<Archive />}></Route>
               <Route path="/trash" element={<Trash />}></Route>
