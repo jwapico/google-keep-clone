@@ -1,16 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Note from "./Note"
+import NoteField from './NoteField';
 
 function Notes(props) {
-  const {notes} = props
-
-  function handleFocus() {
-    console.log("focus!")
-  }
+  const { notes } = props
+  const [isNoteFieldOpen, setIsNoteFieldOpen] = useState(false)
 
   return ( 
     <>
-      <input type="text" placeholder='Take a note...' onFocus={handleFocus}/>
+      {isNoteFieldOpen ? <NoteField /> : <input type="text" placeholder='Take a note...' className='take-a-note' onFocus={() => {setIsNoteFieldOpen(true)}}/>}
       {notes.length 
         ? <div>
             <Note />

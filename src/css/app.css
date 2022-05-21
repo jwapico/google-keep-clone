@@ -199,7 +199,7 @@ body main .routes .Notes {
           flex-direction: column;
 }
 
-body main .routes .Notes input {
+body main .routes .Notes .take-a-note {
   width: 60%;
   margin: auto;
   background-color: transparent;
@@ -207,6 +207,66 @@ body main .routes .Notes input {
   border: 1px solid #e2e2e2a2;
   padding: .75em .75em;
   border-radius: 10px;
+}
+
+body main .routes .Notes .note-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 70%;
+  margin: auto;
+  border: 1px solid rgba(211, 211, 211, 0.438);
+  border-radius: 10px;
+  padding: .1em 1em;
+  -webkit-box-shadow: 2px 2px 2px black;
+          box-shadow: 2px 2px 2px black;
+}
+
+body main .routes .Notes .note-field input, body main .routes .Notes .note-field textarea {
+  background-color: transparent;
+  border-radius: 10px;
+  border: none;
+  margin: .4em .2em;
+  padding: .5em .5em;
+  color: #eee;
+}
+
+body main .routes .Notes .note-field textarea {
+  font-size: 14px;
+  resize: none;
+  padding-block: 1em;
+}
+
+body main .routes .Notes .note-field .note-field-buttons {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+  padding-block: 1em;
+}
+
+body main .routes .Notes .note-field .note-field-buttons button {
+  background-color: transparent;
+  border: none;
+  color: #e2e2e2;
+  font-size: 14px;
+  -webkit-margin-start: 1.5em;
+          margin-inline-start: 1.5em;
+  cursor: pointer;
+  padding: .4em 1em;
+  border-radius: 5px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+body main .routes .Notes .note-field .note-field-buttons button:hover {
+  background-color: #68686825;
 }
 
 body main .routes .Notes .empty-notes {
@@ -224,6 +284,7 @@ body main .routes .Notes .empty-notes {
       -ms-flex-align: center;
           align-items: center;
   height: 100%;
+  padding-block: 5rem;
 }
 
 body main .routes .Notes .empty-notes i {
