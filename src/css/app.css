@@ -181,22 +181,58 @@ body main .routes {
 }
 
 body main .routes .route {
+  padding: 1.5em;
   height: 87vh;
 }
 
+body main .routes .route h1 {
+  margin: 0;
+}
+
 body main .routes .Notes {
-  border: 1px solid red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-body main .routes .Labels {
-  border: 1px solid orange;
+body main .routes .Notes input {
+  width: 60%;
+  margin: auto;
+  background-color: transparent;
+  color: #eeeeee;
+  border: 1px solid #e2e2e2a2;
+  padding: .75em .75em;
+  border-radius: 10px;
 }
 
-body main .routes .Archive {
-  border: 1px solid yellow;
+body main .routes .Notes .empty-notes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
 }
 
-body main .routes .Trash {
-  border: 1px solid green;
+body main .routes .Notes .empty-notes i {
+  color: #37383b;
+  font-size: 100px;
+}
+
+body main .routes .Notes .empty-notes p {
+  font-size: 23px;
+  color: #aeafb3;
 }
 /*# sourceMappingURL=app.css.map */

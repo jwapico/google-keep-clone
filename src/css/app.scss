@@ -138,25 +138,59 @@ body {
 
     .routes {
       width: 100%;
-
+      
       .route {
+        padding: 1.5em;
         height: 87vh;
+        
+        h1 {
+          margin: 0;
+        }
       }
-
+      
       .Notes {
-        border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          width: 60%;
+          margin: auto;
+          background-color: transparent;
+          color: #eeeeee;
+          border: 1px solid #e2e2e2a2;
+          padding: .75em .75em;
+          border-radius: 10px;
+        }
+
+        .empty-notes {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          
+          i {
+            color: #37383b;
+            font-size: 100px;
+          }
+
+          p {
+            font-size: 23px;
+            color: #aeafb3;
+          }
+        }
       }
 
       .Labels {
-        border: 1px solid orange;
+
       }
 
       .Archive {
-        border: 1px solid yellow;
+
       }
 
       .Trash {
-        border: 1px solid green;
+
       }
     }
   }
