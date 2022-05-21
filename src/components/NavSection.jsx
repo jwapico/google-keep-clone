@@ -4,14 +4,16 @@ import LinkItem from "./LinkItem"
 function NavSection(props) {
   return ( 
     <nav>
-      {props.linkValues.map((linkVal, index) => (
+      {props.linkValues.map(linkVal => (
         <LinkItem 
-          key={index}
+          key={linkVal.id}
+          id={linkVal.id}
           to={linkVal.to}
           text={linkVal.text}
           isSelected={linkVal.isSelected}
           isNavOpen={props.isNavOpen}
-          icon={linkVal.icon}/>
+          icon={linkVal.icon}
+          changeIsSelected={props.changeIsSelected}/>
       ))}
     </nav>
   );
