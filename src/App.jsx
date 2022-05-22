@@ -60,6 +60,7 @@ function App() {
 
   function removeLabel(id, labelText) {
     setNotes(prevNotes => prevNotes.map((note, index) => {
+      console.log(index, id)
       return index === id ? {...note, labels: note.labels.filter(label => label !== labelText)} : note
     }))
   }
@@ -95,7 +96,17 @@ function App() {
                   removeLabel={removeLabel}
                   />}>
               </Route>
-              <Route path="/labels" element={<Labels />}></Route>
+              <Route path="/labels" element={
+                <Labels 
+                  notes={notes}
+                  addNote={addNote} 
+                  deleteNote={deleteNote} 
+                  bookMarkNote={bookMarkNote}
+                  addLabel={addLabel}
+                  clearLabels={clearLabels}
+                  removeLabel={removeLabel}
+                  />}>
+              </Route>
               <Route path="/archive" element={<Archive />}></Route>
               <Route path="/trash" element={<Trash />}></Route>
             </Routes>

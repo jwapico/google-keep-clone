@@ -143,8 +143,162 @@ body {
         padding: 1.5em;
         height: 87vh;
         
-        h1 {
-          margin: 0;
+        .notes-container {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: start;
+
+          .note {
+            border: 1px solid #37383b;
+            border-radius: 10px;
+            padding: 1em;
+            margin: 1%;
+            width: 31.3333%;
+            overflow-wrap: break-word;
+            position: relative;
+            transition: all .3s;
+
+            .labels-container {
+              display: flex;
+              flex-wrap: wrap;
+
+              .note-label {
+                font-size: 12px;
+                margin: 0 1em 1em 0;
+                background-color: #37383b;
+                width: max-content;
+                padding: .4em 1em;
+                border-radius: 99px;
+              }
+
+              button {
+                color: rgba(255, 255, 255, 0.76);
+                border: none;
+                transition: all .2s;
+                cursor: pointer;
+                
+                &:hover {
+                  background-color: #5e3b3b;
+                }
+              }
+            }
+
+            .label-modal {
+              width: 80%;
+              display: flex;
+              flex-direction: column;
+              padding: 1em;
+              position: absolute;
+              top: 90%;
+              left: 30%;
+              background-color: #2d2e30;
+              box-shadow: 4px 8px 8px rgba(26, 26, 26, 0.733);
+              border-radius: 7px;
+              z-index: 1;
+
+              p {
+                margin: 0 0 .5em 0;
+                font-size: 16px;
+              }
+
+              input {
+                width: 100%;
+                background-color: transparent;
+                border: none;
+                color: white;
+                font-size: 12px;
+                padding: .3em .7em .3em 0;
+                border-radius: 5px;
+                outline: none;
+              }
+
+              .modal-options {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-block-start: 1em;
+
+                button {
+                  font-size: 12px;
+                  background-color: transparent;
+                  border: none;
+                  color: #e2e2e2;
+                  position: relative;
+                  right: 6px;
+                  bottom: 1px;
+                  padding: .6em;
+                  margin-bottom: -.6em;
+                  transition: background-color .2s;
+                  border-radius: 99px;
+
+                  &:hover {
+                    background-color: #525356;
+                  }
+                }
+
+                .modal-icons-container {
+                  i {
+                    cursor: pointer;
+                    padding: .6em;
+                    transition: all .2s;
+                    border-radius: 50%;
+                    margin-bottom: -.5em;
+                    font-size: 13px;
+                    margin-inline-end: .5em;
+    
+                    &:hover {
+                      background-color: #525356;
+                    }
+                }
+
+              }
+
+              }
+            }
+
+            &.open-modal {
+              border: 1px solid rgba(255, 255, 255, 0.781);
+            }
+          }
+
+          h2, p {
+            margin: 0 0 1em 0;
+          }
+
+          .icons {
+            display: flex;
+            justify-content: right;
+            fill: #99999a;
+            padding-inline-end: .5em;
+            max-height: 100px;
+            transition: max-height .4s, opacity .2s;
+
+            * {
+              margin-inline-start: 1.5em;
+              transition: all .2s;
+
+              &:hover, &:focus {
+                fill: #eeeeee;
+              }
+            }
+
+            .fa-bookmark {
+              opacity: .9;
+              position: relative;
+              top: 5px;
+              right: 10px;
+              color: #99999a;
+
+              &:hover, &:focus {
+                color: #f5f5f5;
+              }
+            }
+
+            &.hidden {
+              max-height: 0;
+              opacity: 0;
+            }
+          }
         }
       }
       
@@ -228,170 +382,30 @@ body {
             color: #aeafb3;
           }
         }
-
-        .notes-container {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: start;
-
-          .note {
-            border: 1px solid #37383b;
-            border-radius: 10px;
-            padding: 1em;
-            margin: 1%;
-            width: 31.3333%;
-            overflow-wrap: break-word;
-            position: relative;
-
-            .labels-container {
-              display: flex;
-              flex-wrap: wrap;
-
-              .note-label {
-                font-size: 12px;
-                margin: 0 1em 1em 0;
-                background-color: #37383b;
-                width: max-content;
-                padding: .4em 1em;
-                border-radius: 99px;
-              }
-
-              button {
-                color: rgba(255, 255, 255, 0.76);
-                border: none;
-                transition: all .2s;
-                cursor: pointer;
-                
-                &:hover {
-                  background-color: #5e3b3b;
-                }
-              }
-            }
-
-            .label-modal {
-              width: 80%;
-              display: flex;
-              flex-direction: column;
-              padding: 1em;
-              position: absolute;
-              top: 90%;
-              left: 30%;
-              background-color: #2d2e30;
-              box-shadow: 4px 8px 8px rgba(26, 26, 26, 0.733);
-              border-radius: 7px;
-
-              p {
-                margin: 0 0 .5em 0;
-                font-size: 16px;
-              }
-
-              input {
-                width: 100%;
-                background-color: transparent;
-                border: none;
-                color: white;
-                font-size: 12px;
-                padding: .3em .7em .3em 0;
-                border-radius: 5px;
-                outline: none;
-              }
-
-              .modal-options {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-block-start: 1em;
-
-                button {
-                  font-size: 12px;
-                  background-color: transparent;
-                  border: none;
-                  color: #e2e2e2;
-                  position: relative;
-                  right: 6px;
-                  bottom: 1px;
-                  padding: .6em;
-                  margin-bottom: -.6em;
-                  transition: background-color .2s;
-                  border-radius: 99px;
-
-                  &:hover {
-                    background-color: #525356;
-                  }
-                }
-
-                .modal-icons-container {
-                  i {
-                    cursor: pointer;
-                    padding: .6em;
-                    transition: all .2s;
-                    border-radius: 50%;
-                    margin-bottom: -.5em;
-                    font-size: 13px;
-                    margin-inline-end: .5em;
-    
-                    &:hover {
-                      background-color: #525356;
-                    }
-                }
-
-              }
-
-              }
-            }
-          }
-
-          h2, p {
-            margin: 0 0 1em 0;
-          }
-
-          .icons {
-            display: flex;
-            justify-content: right;
-            fill: #99999a;
-            padding-inline-end: .5em;
-            max-height: 100px;
-            transition: max-height .4s, opacity .2s;
-
-            * {
-              margin-inline-start: 1.5em;
-              transition: all .2s;
-
-              &:hover, &:focus {
-                fill: #eeeeee;
-              }
-            }
-
-            .fa-bookmark {
-              opacity: .9;
-              position: relative;
-              top: 5px;
-              right: 10px;
-              color: #99999a;
-
-              &:hover, &:focus {
-                color: #f5f5f5;
-              }
-            }
-
-            &.hidden {
-              max-height: 0;
-              opacity: 0;
-            }
-          }
-        }
       }
 
       .Labels {
+        .labels-header {
+          margin-block: 0 .9em;
+          padding-block: 0 .7em;
+          border-bottom: 1px solid #99999a;
+        }
 
-      }
+        .label-name {
+          font-size: 18px;
+          font-weight: 600;
+          margin-block-end: .3em;
+        }
 
-      .Archive {
+        .labels-notes-container {
+          margin-block-end: 3em;
 
-      }
-
-      .Trash {
-
+          .notes-container {
+            .note {
+              margin-inline-start: 0;
+            }
+          }
+        }
       }
     }
   }

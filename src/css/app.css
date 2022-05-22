@@ -185,8 +185,194 @@ body main .routes .route {
   height: 87vh;
 }
 
-body main .routes .route h1 {
-  margin: 0;
+body main .routes .route .notes-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+
+body main .routes .route .notes-container .note {
+  border: 1px solid #37383b;
+  border-radius: 10px;
+  padding: 1em;
+  margin: 1%;
+  width: 31.3333%;
+  overflow-wrap: break-word;
+  position: relative;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+body main .routes .route .notes-container .note .labels-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+body main .routes .route .notes-container .note .labels-container .note-label {
+  font-size: 12px;
+  margin: 0 1em 1em 0;
+  background-color: #37383b;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: .4em 1em;
+  border-radius: 99px;
+}
+
+body main .routes .route .notes-container .note .labels-container button {
+  color: rgba(255, 255, 255, 0.76);
+  border: none;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+body main .routes .route .notes-container .note .labels-container button:hover {
+  background-color: #5e3b3b;
+}
+
+body main .routes .route .notes-container .note .label-modal {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1em;
+  position: absolute;
+  top: 90%;
+  left: 30%;
+  background-color: #2d2e30;
+  -webkit-box-shadow: 4px 8px 8px rgba(26, 26, 26, 0.733);
+          box-shadow: 4px 8px 8px rgba(26, 26, 26, 0.733);
+  border-radius: 7px;
+  z-index: 1;
+}
+
+body main .routes .route .notes-container .note .label-modal p {
+  margin: 0 0 .5em 0;
+  font-size: 16px;
+}
+
+body main .routes .route .notes-container .note .label-modal input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 12px;
+  padding: .3em .7em .3em 0;
+  border-radius: 5px;
+  outline: none;
+}
+
+body main .routes .route .notes-container .note .label-modal .modal-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-margin-before: 1em;
+          margin-block-start: 1em;
+}
+
+body main .routes .route .notes-container .note .label-modal .modal-options button {
+  font-size: 12px;
+  background-color: transparent;
+  border: none;
+  color: #e2e2e2;
+  position: relative;
+  right: 6px;
+  bottom: 1px;
+  padding: .6em;
+  margin-bottom: -.6em;
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s;
+  border-radius: 99px;
+}
+
+body main .routes .route .notes-container .note .label-modal .modal-options button:hover {
+  background-color: #525356;
+}
+
+body main .routes .route .notes-container .note .label-modal .modal-options .modal-icons-container i {
+  cursor: pointer;
+  padding: .6em;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  border-radius: 50%;
+  margin-bottom: -.5em;
+  font-size: 13px;
+  -webkit-margin-end: .5em;
+          margin-inline-end: .5em;
+}
+
+body main .routes .route .notes-container .note .label-modal .modal-options .modal-icons-container i:hover {
+  background-color: #525356;
+}
+
+body main .routes .route .notes-container .note.open-modal {
+  border: 1px solid rgba(255, 255, 255, 0.781);
+}
+
+body main .routes .route .notes-container h2, body main .routes .route .notes-container p {
+  margin: 0 0 1em 0;
+}
+
+body main .routes .route .notes-container .icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  fill: #99999a;
+  -webkit-padding-end: .5em;
+          padding-inline-end: .5em;
+  max-height: 100px;
+  -webkit-transition: max-height .4s, opacity .2s;
+  transition: max-height .4s, opacity .2s;
+}
+
+body main .routes .route .notes-container .icons * {
+  -webkit-margin-start: 1.5em;
+          margin-inline-start: 1.5em;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+body main .routes .route .notes-container .icons *:hover, body main .routes .route .notes-container .icons *:focus {
+  fill: #eeeeee;
+}
+
+body main .routes .route .notes-container .icons .fa-bookmark {
+  opacity: .9;
+  position: relative;
+  top: 5px;
+  right: 10px;
+  color: #99999a;
+}
+
+body main .routes .route .notes-container .icons .fa-bookmark:hover, body main .routes .route .notes-container .icons .fa-bookmark:focus {
+  color: #f5f5f5;
+}
+
+body main .routes .route .notes-container .icons.hidden {
+  max-height: 0;
+  opacity: 0;
 }
 
 body main .routes .Notes .take-a-note {
@@ -290,186 +476,26 @@ body main .routes .Notes .empty-notes p {
   color: #aeafb3;
 }
 
-body main .routes .Notes .notes-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
+body main .routes .Labels .labels-header {
+  margin-block: 0 .9em;
+  padding-block: 0 .7em;
+  border-bottom: 1px solid #99999a;
 }
 
-body main .routes .Notes .notes-container .note {
-  border: 1px solid #37383b;
-  border-radius: 10px;
-  padding: 1em;
-  margin: 1%;
-  width: 31.3333%;
-  overflow-wrap: break-word;
-  position: relative;
+body main .routes .Labels .label-name {
+  font-size: 18px;
+  font-weight: 600;
+  -webkit-margin-after: .3em;
+          margin-block-end: .3em;
 }
 
-body main .routes .Notes .notes-container .note .labels-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+body main .routes .Labels .labels-notes-container {
+  -webkit-margin-after: 3em;
+          margin-block-end: 3em;
 }
 
-body main .routes .Notes .notes-container .note .labels-container .note-label {
-  font-size: 12px;
-  margin: 0 1em 1em 0;
-  background-color: #37383b;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  padding: .4em 1em;
-  border-radius: 99px;
-}
-
-body main .routes .Notes .notes-container .note .labels-container button {
-  color: rgba(255, 255, 255, 0.76);
-  border: none;
-  -webkit-transition: all .2s;
-  transition: all .2s;
-  cursor: pointer;
-}
-
-body main .routes .Notes .notes-container .note .labels-container button:hover {
-  background-color: #5e3b3b;
-}
-
-body main .routes .Notes .notes-container .note .label-modal {
-  width: 80%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 1em;
-  position: absolute;
-  top: 90%;
-  left: 30%;
-  background-color: #2d2e30;
-  -webkit-box-shadow: 4px 8px 8px rgba(26, 26, 26, 0.733);
-          box-shadow: 4px 8px 8px rgba(26, 26, 26, 0.733);
-  border-radius: 7px;
-}
-
-body main .routes .Notes .notes-container .note .label-modal p {
-  margin: 0 0 .5em 0;
-  font-size: 16px;
-}
-
-body main .routes .Notes .notes-container .note .label-modal input {
-  width: 100%;
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-size: 12px;
-  padding: .3em .7em .3em 0;
-  border-radius: 5px;
-  outline: none;
-}
-
-body main .routes .Notes .notes-container .note .label-modal .modal-options {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-margin-before: 1em;
-          margin-block-start: 1em;
-}
-
-body main .routes .Notes .notes-container .note .label-modal .modal-options button {
-  font-size: 12px;
-  background-color: transparent;
-  border: none;
-  color: #e2e2e2;
-  position: relative;
-  right: 6px;
-  bottom: 1px;
-  padding: .6em;
-  margin-bottom: -.6em;
-  -webkit-transition: background-color .2s;
-  transition: background-color .2s;
-  border-radius: 99px;
-}
-
-body main .routes .Notes .notes-container .note .label-modal .modal-options button:hover {
-  background-color: #525356;
-}
-
-body main .routes .Notes .notes-container .note .label-modal .modal-options .modal-icons-container i {
-  cursor: pointer;
-  padding: .6em;
-  -webkit-transition: all .2s;
-  transition: all .2s;
-  border-radius: 50%;
-  margin-bottom: -.5em;
-  font-size: 13px;
-  -webkit-margin-end: .5em;
-          margin-inline-end: .5em;
-}
-
-body main .routes .Notes .notes-container .note .label-modal .modal-options .modal-icons-container i:hover {
-  background-color: #525356;
-}
-
-body main .routes .Notes .notes-container h2, body main .routes .Notes .notes-container p {
-  margin: 0 0 1em 0;
-}
-
-body main .routes .Notes .notes-container .icons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: right;
-      -ms-flex-pack: right;
-          justify-content: right;
-  fill: #99999a;
-  -webkit-padding-end: .5em;
-          padding-inline-end: .5em;
-  max-height: 100px;
-  -webkit-transition: max-height .4s, opacity .2s;
-  transition: max-height .4s, opacity .2s;
-}
-
-body main .routes .Notes .notes-container .icons * {
-  -webkit-margin-start: 1.5em;
-          margin-inline-start: 1.5em;
-  -webkit-transition: all .2s;
-  transition: all .2s;
-}
-
-body main .routes .Notes .notes-container .icons *:hover, body main .routes .Notes .notes-container .icons *:focus {
-  fill: #eeeeee;
-}
-
-body main .routes .Notes .notes-container .icons .fa-bookmark {
-  opacity: .9;
-  position: relative;
-  top: 5px;
-  right: 10px;
-  color: #99999a;
-}
-
-body main .routes .Notes .notes-container .icons .fa-bookmark:hover, body main .routes .Notes .notes-container .icons .fa-bookmark:focus {
-  color: #f5f5f5;
-}
-
-body main .routes .Notes .notes-container .icons.hidden {
-  max-height: 0;
-  opacity: 0;
+body main .routes .Labels .labels-notes-container .notes-container .note {
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
 }
 /*# sourceMappingURL=app.css.map */

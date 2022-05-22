@@ -8,11 +8,11 @@ function Note(props) {
   const {note, id, bookMarkNote, deleteNote, addLabel, clearLabels, removeLabel} = props
 
   return ( 
-    <div className='note' onMouseOver={() => setIsHovered(true)} onMouseLeave={() => {setIsHovered(false); setIsModalOpen(false)}}>
+    <div className={`note ${isModalOpen ? "open-modal" : ""}`} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => {setIsHovered(false); setIsModalOpen(false)}}>
       <h2>{note.title}</h2>
       <p>{note.noteText}</p>
       <div className="labels-container">
-        {note.labels.length > 0 && note.labels.map((label, index) => <button className='note-label' onClick={() => removeLabel(id, label)} key={index}>{label}</button>)}
+        {note.labels.length > 0 && note.labels.map((label, index) => <button className='note-label' onClick={() => removeLabel(note.id, label)} key={index}>{label}</button>)}
       </div>
 
       <div className={`icons ${isHovered ? "" : "hidden"}`}>
@@ -30,7 +30,7 @@ function Note(props) {
         }
 
         {/* delete note icon*/}
-        <svg onClick={() => deleteNote(id)} 
+        <svg onClick={() => deleteNote(note.id)} 
           xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z"></path><path d="M9 8h2v9H9zm4 0h2v9h-2z"></path>
         </svg>
       </div>
