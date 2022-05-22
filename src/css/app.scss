@@ -26,7 +26,7 @@ body {
         position: relative;
         top: 2px;
 
-        &:hover {
+        &:hover, &:focus {
           cursor: pointer;
           fill: white;
           transform: scale(110%);
@@ -122,12 +122,12 @@ body {
       &.selected {
         background-color: #41331c;
 
-        &:hover {
+        &:hover, &:focus {
           background-color: #584424;
         }
       }
 
-      &:hover {
+      &:hover, &:focus {
         background-color: #45464b96;
       }
     }
@@ -202,7 +202,7 @@ body {
               border-radius: 5px;
               transition: all .2s;
 
-              &:hover {
+              &:hover, &:focus {
                 background-color: #68686825;
               }
             }
@@ -240,10 +240,88 @@ body {
             margin: 1%;
             width: 31.3333%;
             overflow-wrap: break-word;
+            position: relative;
+
+            .label-modal {
+              width: 80%;
+              display: flex;
+              flex-direction: column;
+              padding: 1em;
+              position: absolute;
+              background-color: #2d2e30;
+              left: 100px;
+              top: 130px;
+              box-shadow: 4px 8px 8px rgba(26, 26, 26, 0.733);
+              border-radius: 7px;
+
+              p {
+                margin: 0 0 .5em 0;
+                font-size: 14px;
+              }
+
+              input {
+                width: 100%;
+                background-color: transparent;
+                border: none;
+                color: white;
+                font-size: 12px;
+                padding: .3em .7em .3em 0;
+                border-radius: 5px;
+                outline: none;
+              }
+
+              i {
+                margin-left: auto;
+                cursor: pointer;
+                padding: .6em;
+                transition: all .2s;
+                border-radius: 50%;
+                margin-bottom: -.5em;
+
+                &:hover {
+                  background-color: #525356;
+                }
+              }
+            }
           }
 
           h2, p {
             margin: 0 0 1em 0;
+          }
+
+          .icons {
+            display: flex;
+            justify-content: right;
+            fill: #99999a;
+            padding-inline-end: .5em;
+            max-height: 100px;
+            transition: max-height .4s, opacity .2s;
+
+            * {
+              margin-inline-start: 1.5em;
+              transition: all .2s;
+
+              &:hover, &:focus {
+                fill: #eeeeee;
+              }
+            }
+
+            .fa-bookmark {
+              opacity: .9;
+              position: relative;
+              top: 5px;
+              right: 10px;
+              color: #99999a;
+
+              &:hover, &:focus {
+                color: #f5f5f5;
+              }
+            }
+
+            &.hidden {
+              max-height: 0;
+              opacity: 0;
+            }
           }
         }
       }

@@ -12,7 +12,8 @@ function NoteField(props) {
     props.closeNoteField()
     props.addNote({
       title: title,
-      noteText: noteText
+      noteText: noteText,
+      isBookMarked: false
     })
   }
 

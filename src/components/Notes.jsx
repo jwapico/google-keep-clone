@@ -11,7 +11,15 @@ function Notes(props) {
       {isNoteFieldOpen ? <NoteField addNote={props.addNote} closeNoteField={() => setIsNoteFieldOpen(false)}/> : <input type="text" placeholder='Take a note...' className='take-a-note' onFocus={() => {setIsNoteFieldOpen(true)}}/>}
       {notes.length 
         ? <div className='notes-container'>
-            {notes.map((note, index) => <Note key={index} note={note}/>)}
+            {notes.map((note, index) => (
+              <Note 
+                key={index} 
+                note={note} 
+                id={index} 
+                deleteNote={props.deleteNote} 
+                bookMarkNote={props.bookMarkNote}/>
+              ))
+            }
           </div>
         : <div className='empty-notes'>
             <i className="fa-solid fa-lightbulb"></i>
