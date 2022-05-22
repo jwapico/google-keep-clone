@@ -14,7 +14,7 @@ function NoteField(props) {
       title: title,
       noteText: noteText,
       isBookMarked: false,
-      labels: ""
+      labels: []
     })
   }
 
