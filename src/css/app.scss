@@ -242,21 +242,30 @@ body {
             overflow-wrap: break-word;
             position: relative;
 
+            .note-label {
+              font-size: 12px;
+              margin: 0;
+              background-color: #37383b;
+              width: max-content;
+              padding: .4em 1em;
+              border-radius: 99px;
+            }
+
             .label-modal {
               width: 80%;
               display: flex;
               flex-direction: column;
               padding: 1em;
               position: absolute;
+              top: 90%;
+              left: 30%;
               background-color: #2d2e30;
-              left: 100px;
-              top: 130px;
               box-shadow: 4px 8px 8px rgba(26, 26, 26, 0.733);
               border-radius: 7px;
 
               p {
                 margin: 0 0 .5em 0;
-                font-size: 14px;
+                font-size: 16px;
               }
 
               input {
@@ -270,17 +279,47 @@ body {
                 outline: none;
               }
 
-              i {
-                margin-left: auto;
-                cursor: pointer;
-                padding: .6em;
-                transition: all .2s;
-                border-radius: 50%;
-                margin-bottom: -.5em;
+              .modal-options {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-block-start: 1em;
 
-                &:hover {
-                  background-color: #525356;
+                button {
+                  font-size: 12px;
+                  background-color: transparent;
+                  border: none;
+                  color: #e2e2e2;
+                  position: relative;
+                  right: 6px;
+                  bottom: 1px;
+                  padding: .6em;
+                  margin-bottom: -.6em;
+                  transition: background-color .2s;
+                  border-radius: 99px;
+
+                  &:hover {
+                    background-color: #525356;
+                  }
                 }
+
+                .modal-icons-container {
+                  i {
+                    cursor: pointer;
+                    padding: .6em;
+                    transition: all .2s;
+                    border-radius: 50%;
+                    margin-bottom: -.5em;
+                    font-size: 13px;
+                    margin-inline-end: .5em;
+    
+                    &:hover {
+                      background-color: #525356;
+                    }
+                }
+
+              }
+
               }
             }
           }

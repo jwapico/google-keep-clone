@@ -309,6 +309,17 @@ body main .routes .Notes .notes-container .note {
   position: relative;
 }
 
+body main .routes .Notes .notes-container .note .note-label {
+  font-size: 12px;
+  margin: 0;
+  background-color: #37383b;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: .4em 1em;
+  border-radius: 99px;
+}
+
 body main .routes .Notes .notes-container .note .label-modal {
   width: 80%;
   display: -webkit-box;
@@ -320,9 +331,9 @@ body main .routes .Notes .notes-container .note .label-modal {
           flex-direction: column;
   padding: 1em;
   position: absolute;
+  top: 90%;
+  left: 30%;
   background-color: #2d2e30;
-  left: 100px;
-  top: 130px;
   -webkit-box-shadow: 4px 8px 8px rgba(26, 26, 26, 0.733);
           box-shadow: 4px 8px 8px rgba(26, 26, 26, 0.733);
   border-radius: 7px;
@@ -330,7 +341,7 @@ body main .routes .Notes .notes-container .note .label-modal {
 
 body main .routes .Notes .notes-container .note .label-modal p {
   margin: 0 0 .5em 0;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 body main .routes .Notes .notes-container .note .label-modal input {
@@ -344,17 +355,52 @@ body main .routes .Notes .notes-container .note .label-modal input {
   outline: none;
 }
 
-body main .routes .Notes .notes-container .note .label-modal i {
-  margin-left: auto;
+body main .routes .Notes .notes-container .note .label-modal .modal-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-margin-before: 1em;
+          margin-block-start: 1em;
+}
+
+body main .routes .Notes .notes-container .note .label-modal .modal-options button {
+  font-size: 12px;
+  background-color: transparent;
+  border: none;
+  color: #e2e2e2;
+  position: relative;
+  right: 6px;
+  bottom: 1px;
+  padding: .6em;
+  margin-bottom: -.6em;
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s;
+  border-radius: 99px;
+}
+
+body main .routes .Notes .notes-container .note .label-modal .modal-options button:hover {
+  background-color: #525356;
+}
+
+body main .routes .Notes .notes-container .note .label-modal .modal-options .modal-icons-container i {
   cursor: pointer;
   padding: .6em;
   -webkit-transition: all .2s;
   transition: all .2s;
   border-radius: 50%;
   margin-bottom: -.5em;
+  font-size: 13px;
+  -webkit-margin-end: .5em;
+          margin-inline-end: .5em;
 }
 
-body main .routes .Notes .notes-container .note .label-modal i:hover {
+body main .routes .Notes .notes-container .note .label-modal .modal-options .modal-icons-container i:hover {
   background-color: #525356;
 }
 

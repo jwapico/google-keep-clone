@@ -52,6 +52,13 @@ function App() {
     setNotes(prevNotes => prevNotes.map((note, index) => index === id ? {...note, isBookMarked: !note.isBookMarked} : note))
   }
 
+  function addLabel(id, labelText) {
+    setNotes(prevNotes => prevNotes.map(
+      (note, index) => index === id ? {...note, label: labelText} : note
+    ))
+    console.log(notes, labelText, id)
+  }
+
   return (
     <>
       <Header toggleIsNavOpen={toggleIsNavOpen}/>
@@ -66,7 +73,15 @@ function App() {
         <div className="routes">
           <div className={`route ${sectionLinks.filter(link => link.isSelected)[0].text}`}>
             <Routes>
-              <Route exact path="/" element={<Notes notes={notes} addNote={addNote} deleteNote={deleteNote} bookMarkNote={bookMarkNote}/>}></Route>
+              <Route exact path="/" element={
+                <Notes 
+                  notes={notes} 
+                  addNote={addNote} 
+                  deleteNote={deleteNote} 
+                  bookMarkNote={bookMarkNote}
+                  addLabel={addLabel}
+                  />}>
+              </Route>
               <Route path="/labels" element={<Labels />}></Route>
               <Route path="/archive" element={<Archive />}></Route>
               <Route path="/trash" element={<Trash />}></Route>
