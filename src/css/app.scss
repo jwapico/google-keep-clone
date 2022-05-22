@@ -154,6 +154,7 @@ body {
           display: block;
           width: 60%;
           margin: auto;
+          margin-block-end: .8em;
           background-color: transparent;
           color: #eeeeee;
           border: 1px solid #e2e2e2a2;
@@ -242,13 +243,29 @@ body {
             overflow-wrap: break-word;
             position: relative;
 
-            .note-label {
-              font-size: 12px;
-              margin: 0;
-              background-color: #37383b;
-              width: max-content;
-              padding: .4em 1em;
-              border-radius: 99px;
+            .labels-container {
+              display: flex;
+              flex-wrap: wrap;
+
+              .note-label {
+                font-size: 12px;
+                margin: 0 1em 1em 0;
+                background-color: #37383b;
+                width: max-content;
+                padding: .4em 1em;
+                border-radius: 99px;
+              }
+
+              button {
+                color: rgba(255, 255, 255, 0.76);
+                border: none;
+                transition: all .2s;
+                cursor: pointer;
+                
+                &:hover {
+                  background-color: #5e3b3b;
+                }
+              }
             }
 
             .label-modal {

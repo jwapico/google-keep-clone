@@ -18,7 +18,9 @@ function Notes(props) {
                 id={index} 
                 deleteNote={props.deleteNote} 
                 bookMarkNote={props.bookMarkNote}
-                addLabel={props.addLabel}/>
+                addLabel={props.addLabel}
+                clearLabels={props.clearLabels}
+                removeLabel={props.removeLabel}/>
               ))
             }
           </div>

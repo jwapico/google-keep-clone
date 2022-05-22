@@ -1,17 +1,19 @@
 import React, {useState} from 'react';
 
 function Note(props) {
-  const [isHovered, setIsHovered] = useState(true)
-  const [isModalOpen, setIsModalOpen] = useState(true)
+  const [isHovered, setIsHovered] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [labelInput, setLabelInput] = useState("")
 
-  const {note, id, bookMarkNote, deleteNote, addLabel} = props
+  const {note, id, bookMarkNote, deleteNote, addLabel, clearLabels, removeLabel} = props
 
   return ( 
     <div className='note' onMouseOver={() => setIsHovered(true)} onMouseLeave={() => {setIsHovered(false); setIsModalOpen(false)}}>
       <h2>{note.title}</h2>
       <p>{note.noteText}</p>
-      {note.label && <p className='note-label'>{note.label}</p>}
+      <div className="labels-container">
+        {note.labels.length > 0 && note.labels.map((label, index) => <button className='note-label' onClick={() => removeLabel(id, label)} key={index}>{label}</button>)}
+      </div>
 
       <div className={`icons ${isHovered ? "" : "hidden"}`}>
         {note.label 
@@ -44,7 +46,7 @@ function Note(props) {
             onChange={(e) => setLabelInput(e.target.value)}/>
           
           <div className="modal-options">
-            <button onClick={() => {addLabel(id, ""); setIsModalOpen(false)}}>Remove Labels</button>
+            <button onClick={() => {clearLabels(id); setIsModalOpen(false)}}>Remove Labels</button>
             <div className="modal-icons-container">
               <i className="fa-solid fa-ban" onClick={() => setIsModalOpen(false)}></i>
               <i

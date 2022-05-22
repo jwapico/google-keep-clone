@@ -193,6 +193,8 @@ body main .routes .Notes .take-a-note {
   display: block;
   width: 60%;
   margin: auto;
+  -webkit-margin-after: .8em;
+          margin-block-end: .8em;
   background-color: transparent;
   color: #eeeeee;
   border: 1px solid #e2e2e2a2;
@@ -309,15 +311,35 @@ body main .routes .Notes .notes-container .note {
   position: relative;
 }
 
-body main .routes .Notes .notes-container .note .note-label {
+body main .routes .Notes .notes-container .note .labels-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+body main .routes .Notes .notes-container .note .labels-container .note-label {
   font-size: 12px;
-  margin: 0;
+  margin: 0 1em 1em 0;
   background-color: #37383b;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   padding: .4em 1em;
   border-radius: 99px;
+}
+
+body main .routes .Notes .notes-container .note .labels-container button {
+  color: rgba(255, 255, 255, 0.76);
+  border: none;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+body main .routes .Notes .notes-container .note .labels-container button:hover {
+  background-color: #5e3b3b;
 }
 
 body main .routes .Notes .notes-container .note .label-modal {
