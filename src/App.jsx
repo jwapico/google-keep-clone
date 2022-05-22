@@ -45,11 +45,7 @@ function App() {
   }
 
   function deleteNote(id) {
-    setNotes(prevNotes => prevNotes.filter((note, index) => index !== id))
-  }
-
-  function bookMarkNote(id) {
-    setNotes(prevNotes => prevNotes.map((note, index) => index === id ? {...note, isBookMarked: !note.isBookMarked} : note))
+    setNotes(prevNotes => prevNotes.filter(note => note.id !== id))
   }
 
   function addLabel(id, labelText) {
@@ -59,15 +55,17 @@ function App() {
   }
 
   function removeLabel(id, labelText) {
-    setNotes(prevNotes => prevNotes.map((note, index) => {
-      console.log(index, id)
-      return index === id ? {...note, labels: note.labels.filter(label => label !== labelText)} : note
+    setNotes(prevNotes => prevNotes.map(note => {
+      if (note.id === id) {
+        return {...note, labels: note.labels.filter(label => label !== labelText)}
+      }
+      return note
     }))
   }
 
   function clearLabels(id) {
     setNotes(prevNotes => prevNotes.map(note => {
-      return {...note, labels: []}
+      return note.id === id ? {...note, labels: []} : note
     }))
   }
 
@@ -90,7 +88,6 @@ function App() {
                   notes={notes} 
                   addNote={addNote} 
                   deleteNote={deleteNote} 
-                  bookMarkNote={bookMarkNote}
                   addLabel={addLabel}
                   clearLabels={clearLabels}
                   removeLabel={removeLabel}
@@ -101,7 +98,6 @@ function App() {
                   notes={notes}
                   addNote={addNote} 
                   deleteNote={deleteNote} 
-                  bookMarkNote={bookMarkNote}
                   addLabel={addLabel}
                   clearLabels={clearLabels}
                   removeLabel={removeLabel}

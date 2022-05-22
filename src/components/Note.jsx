@@ -5,7 +5,7 @@ function Note(props) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [labelInput, setLabelInput] = useState("")
 
-  const {note, id, bookMarkNote, deleteNote, addLabel, clearLabels, removeLabel} = props
+  const {note, id, deleteNote, addLabel, clearLabels, removeLabel} = props
 
   return ( 
     <div className={`note ${isModalOpen ? "open-modal" : ""}`} onMouseOver={() => setIsHovered(true)} onMouseLeave={() => {setIsHovered(false); setIsModalOpen(false)}}>
@@ -19,7 +19,7 @@ function Note(props) {
         {note.label 
           // bookmarked icon
           ? <i  
-              onClick={() => {bookMarkNote(id); setIsModalOpen(true)}} 
+              onClick={() => {setIsModalOpen(true)}} 
               className="fa-solid fa-bookmark"></i> 
           
           // label icon
@@ -46,7 +46,7 @@ function Note(props) {
             onChange={(e) => setLabelInput(e.target.value)}/>
           
           <div className="modal-options">
-            <button onClick={() => {clearLabels(id); setIsModalOpen(false)}}>Remove Labels</button>
+            <button onClick={() => {clearLabels(note.id); setIsModalOpen(false)}}>Remove Labels</button>
             <div className="modal-icons-container">
               <i className="fa-solid fa-ban" onClick={() => setIsModalOpen(false)}></i>
               <i

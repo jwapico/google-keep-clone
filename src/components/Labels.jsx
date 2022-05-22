@@ -39,7 +39,7 @@ function Labels(props) {
         : 
           <div className='empty-labels'>
             <p>No labeled Notes</p>
-            <i class="fa-solid fa-inbox"></i>
+            <i className="fa-solid fa-inbox"></i>
           </div>
       }
     </>
