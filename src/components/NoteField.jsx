@@ -15,7 +15,9 @@ function NoteField(props) {
       noteText: noteText,
       isBookMarked: false,
       labels: [],
-      id: props.notes.length 
+      id: props.notes.length,
+      isArchived: false,
+      isDeleted: false
     })
   }
 

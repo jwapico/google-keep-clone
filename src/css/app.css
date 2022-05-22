@@ -197,7 +197,7 @@ body main .routes .route .notes-container {
 }
 
 body main .routes .route .notes-container .note {
-  border: 1px solid #37383b;
+  border: 1px solid #5f6368;
   border-radius: 10px;
   padding: 1em;
   margin: 1%;
@@ -206,6 +206,18 @@ body main .routes .route .notes-container .note {
   position: relative;
   -webkit-transition: all .3s;
   transition: all .3s;
+}
+
+body main .routes .route .notes-container .note:hover {
+  -webkit-box-shadow: 7px 7px 20px #00000098;
+          box-shadow: 7px 7px 20px #00000098;
+  -webkit-transform: translate(-4px, -4px);
+          transform: translate(-4px, -4px);
+}
+
+body main .routes .route .notes-container .note p {
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
 }
 
 body main .routes .route .notes-container .note .labels-container {
@@ -218,13 +230,15 @@ body main .routes .route .notes-container .note .labels-container {
 
 body main .routes .route .notes-container .note .labels-container .note-label {
   font-size: 12px;
-  margin: 0 1em 1em 0;
+  margin: 0 1em 0em 0;
   background-color: #37383b;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   padding: .4em 1em;
   border-radius: 99px;
+  -webkit-margin-before: 1em;
+          margin-block-start: 1em;
 }
 
 body main .routes .route .notes-container .note .labels-container button {
@@ -237,6 +251,70 @@ body main .routes .route .notes-container .note .labels-container button {
 
 body main .routes .route .notes-container .note .labels-container button:hover {
   background-color: #5e3b3b;
+}
+
+body main .routes .route .notes-container .note.deleted-note {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+body main .routes .route .notes-container .note.deleted-note:hover {
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  border-color: transparent;
+}
+
+body main .routes .route .notes-container .note .deleted-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body main .routes .route .notes-container .note .deleted-overlay button {
+  color: #e2e2e2;
+  background-color: #5c5c5ccc;
+  border: none;
+  padding: .5em 1em;
+  font-size: 14px;
+  border-radius: 99px;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+body main .routes .route .notes-container .note .deleted-overlay button.delete-btn {
+  -webkit-margin-end: 1em;
+          margin-inline-end: 1em;
+}
+
+body main .routes .route .notes-container .note .deleted-overlay button:hover {
+  background-color: #616161;
+  color: white;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-box-shadow: 2px 2px 5px rgba(20, 20, 20, 0.644);
+          box-shadow: 2px 2px 5px rgba(20, 20, 20, 0.644);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  border-color: transparent;
+}
+
+body main .routes .route .notes-container .note .deleted-overlay:hover {
+  background-color: #18181ab9;
 }
 
 body main .routes .route .notes-container .note .label-modal {
@@ -253,8 +331,8 @@ body main .routes .route .notes-container .note .label-modal {
   top: 90%;
   left: 30%;
   background-color: #2d2e30;
-  -webkit-box-shadow: 4px 8px 8px rgba(26, 26, 26, 0.733);
-          box-shadow: 4px 8px 8px rgba(26, 26, 26, 0.733);
+  -webkit-box-shadow: 6px 10px 12px rgba(26, 26, 26, 0.842);
+          box-shadow: 6px 10px 12px rgba(26, 26, 26, 0.842);
   border-radius: 7px;
   z-index: 1;
 }
@@ -340,6 +418,7 @@ body main .routes .route .notes-container .icons {
       -ms-flex-pack: right;
           justify-content: right;
   fill: #99999a;
+  color: #99999a;
   -webkit-padding-end: .5em;
           padding-inline-end: .5em;
   max-height: 100px;
@@ -347,15 +426,25 @@ body main .routes .route .notes-container .icons {
   transition: max-height .4s, opacity .2s;
 }
 
+body main .routes .route .notes-container .icons i {
+  font-size: 18px;
+  position: relative;
+  top: 1px;
+  right: 2px;
+}
+
 body main .routes .route .notes-container .icons * {
   -webkit-margin-start: 1.5em;
           margin-inline-start: 1.5em;
   -webkit-transition: all .2s;
   transition: all .2s;
+  -webkit-margin-before: 1em;
+          margin-block-start: 1em;
 }
 
 body main .routes .route .notes-container .icons *:hover, body main .routes .route .notes-container .icons *:focus {
   fill: #eeeeee;
+  color: #eeeeee;
 }
 
 body main .routes .route .notes-container .icons .fa-bookmark {
@@ -522,6 +611,68 @@ body main .routes .Labels .empty-labels i {
 }
 
 body main .routes .Labels .empty-labels p {
+  font-size: 23px;
+  color: #aeafb3;
+}
+
+body main .routes .Archive .archive-header {
+  margin-block: 0 .9em;
+  padding-block: 0 .7em;
+  border-bottom: 1px solid #99999a;
+}
+
+body main .routes .Archive .empty-archive {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  padding-block: 5rem;
+}
+
+body main .routes .Archive .empty-archive i {
+  color: #37383b;
+  font-size: 150px;
+}
+
+body main .routes .Archive .empty-archive p {
+  font-size: 23px;
+  color: #aeafb3;
+}
+
+body main .routes .Trash .empty-trash {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  padding-block: 5rem;
+}
+
+body main .routes .Trash i {
+  color: #37383b;
+  font-size: 150px;
+}
+
+body main .routes .Trash p {
   font-size: 23px;
   color: #aeafb3;
 }

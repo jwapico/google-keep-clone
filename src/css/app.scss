@@ -149,7 +149,7 @@ body {
           align-items: start;
 
           .note {
-            border: 1px solid #37383b;
+            border: 1px solid #5f6368;
             border-radius: 10px;
             padding: 1em;
             margin: 1%;
@@ -158,17 +158,27 @@ body {
             position: relative;
             transition: all .3s;
 
+            &:hover {
+              box-shadow: 7px 7px 20px #00000098;
+              transform: translate(-4px, -4px);
+            }
+
+            p {
+              margin-block-end: 0;
+            }
+
             .labels-container {
               display: flex;
               flex-wrap: wrap;
 
               .note-label {
                 font-size: 12px;
-                margin: 0 1em 1em 0;
+                margin: 0 1em 0em 0;
                 background-color: #37383b;
                 width: max-content;
                 padding: .4em 1em;
                 border-radius: 99px;
+                margin-block-start: 1em;
               }
 
               button {
@@ -183,6 +193,56 @@ body {
               }
             }
 
+            &.deleted-note {
+              transition: all .3s;
+              
+              &:hover {
+                backdrop-filter: blur(5px);
+                border-color: transparent;
+              }
+            }
+
+            .deleted-overlay {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              transition: all .3s;
+              border-radius: 10px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              button {
+                color: rgb(226, 226, 226);
+                background-color: #5c5c5ccc;
+                border: none;
+                padding: .5em 1em;
+                font-size: 14px;
+                border-radius: 99px;
+                transition: all .3s;
+                cursor: pointer;
+
+                &.delete-btn {
+                  margin-inline-end: 1em;
+                }
+
+                &:hover {
+                  background-color: #616161;
+                  color: rgb(255, 255, 255);
+                  transform: scale(1.05);
+                  box-shadow: 2px 2px 5px rgba(20, 20, 20, 0.644);
+                  backdrop-filter: blur(5px);
+                  border-color: transparent;
+                }
+              }
+
+              &:hover {
+                background-color: #18181ab9;
+              }
+            }
+
             .label-modal {
               width: 80%;
               display: flex;
@@ -192,7 +252,7 @@ body {
               top: 90%;
               left: 30%;
               background-color: #2d2e30;
-              box-shadow: 4px 8px 8px rgba(26, 26, 26, 0.733);
+              box-shadow: 6px 10px 12px rgba(26, 26, 26, 0.842);
               border-radius: 7px;
               z-index: 1;
 
@@ -269,16 +329,26 @@ body {
             display: flex;
             justify-content: right;
             fill: #99999a;
+            color: #99999a;
             padding-inline-end: .5em;
             max-height: 100px;
             transition: max-height .4s, opacity .2s;
 
+            i {
+              font-size: 18px;
+              position: relative;
+              top: 1px;
+              right: 2px;
+            }
+
             * {
               margin-inline-start: 1.5em;
               transition: all .2s;
+              margin-block-start: 1em;
 
               &:hover, &:focus {
                 fill: #eeeeee;
+                color: #eeeeee
               }
             }
 
@@ -424,6 +494,54 @@ body {
             font-size: 23px;
             color: #aeafb3;
           }
+        }
+      }
+
+      .Archive {
+        .archive-header {
+          margin-block: 0 .9em;
+          padding-block: 0 .7em;
+          border-bottom: 1px solid #99999a;
+        }
+
+        .empty-archive {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          padding-block: 5rem;
+          
+          i {
+            color: #37383b;
+            font-size: 150px;
+          }
+
+          p {
+            font-size: 23px;
+            color: #aeafb3;
+          }
+        }
+      }
+
+      .Trash {
+        .empty-trash {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          padding-block: 5rem;
+        }
+
+        i {
+          color: #37383b;
+          font-size: 150px;
+        }
+
+        p {
+          font-size: 23px;
+          color: #aeafb3;
         }
       }
     }

@@ -9,18 +9,24 @@ function Notes(props) {
   return ( 
     <>
       {isNoteFieldOpen ? <NoteField notes={notes} addNote={props.addNote} closeNoteField={() => setIsNoteFieldOpen(false)}/> : <input type="text" placeholder='Take a note...' className='take-a-note' onFocus={() => {setIsNoteFieldOpen(true)}}/>}
-      {notes.length 
+      {notes.length && notes.filter(note => !note.isDeleted).length
         ? <div className='notes-container'>
             {notes.map((note, index) => (
-              <Note 
-                key={note.id} 
-                note={note} 
-                id={index} 
-                deleteNote={props.deleteNote} 
-                bookMarkNote={props.bookMarkNote}
-                addLabel={props.addLabel}
-                clearLabels={props.clearLabels}
-                removeLabel={props.removeLabel}/>
+              note.isArchived || note.isDeleted
+              ? 
+                null
+              : 
+                <Note 
+                  key={note.id} 
+                  note={note} 
+                  id={index} 
+                  deleteNote={props.deleteNote} 
+                  bookMarkNote={props.bookMarkNote}
+                  addLabel={props.addLabel}
+                  clearLabels={props.clearLabels}
+                  removeLabel={props.removeLabel}
+                  archiveNote={props.archiveNote}/>
+              
               ))
             }
           </div>

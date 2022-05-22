@@ -45,7 +45,17 @@ function App() {
   }
 
   function deleteNote(id) {
+    setNotes(prevNotes => prevNotes.map(note => {
+      return note.id === id ? {...note, isDeleted: !note.isDeleted} : note
+    }))
+  }
+
+  function permaDeleteNote(id) {
     setNotes(prevNotes => prevNotes.filter(note => note.id !== id))
+  }
+
+  function recoverNote(id) {
+    setNotes(prevNotes => prevNotes.map(note => note.id === id ? {...note, isDeleted: !note.isDeleted} : note))
   }
 
   function addLabel(id, labelText) {
@@ -69,6 +79,12 @@ function App() {
     }))
   }
 
+  function archiveNote(id) {
+    setNotes(prevNotes => prevNotes.map(note => {
+      return note.id === id ? {...note, isArchived: !note.isArchived} : note
+    }))
+  }
+
   return (
     <>
       <Header toggleIsNavOpen={toggleIsNavOpen}/>
@@ -83,6 +99,7 @@ function App() {
         <div className="routes">
           <div className={`route ${sectionLinks.filter(link => link.isSelected)[0].text}`}>
             <Routes>
+
               <Route exact path="/" element={
                 <Notes 
                   notes={notes} 
@@ -91,8 +108,10 @@ function App() {
                   addLabel={addLabel}
                   clearLabels={clearLabels}
                   removeLabel={removeLabel}
+                  archiveNote={archiveNote}
                   />}>
               </Route>
+
               <Route path="/labels" element={
                 <Labels 
                   notes={notes}
@@ -101,10 +120,36 @@ function App() {
                   addLabel={addLabel}
                   clearLabels={clearLabels}
                   removeLabel={removeLabel}
+                  archiveNote={archiveNote}
                   />}>
               </Route>
-              <Route path="/archive" element={<Archive />}></Route>
-              <Route path="/trash" element={<Trash />}></Route>
+
+              <Route path="/archive" element={
+                <Archive 
+                  notes={notes}
+                  addNote={addNote} 
+                  deleteNote={deleteNote} 
+                  addLabel={addLabel}
+                  clearLabels={clearLabels}
+                  removeLabel={removeLabel}
+                  archiveNote={archiveNote}
+                />}>
+              </Route>
+
+              <Route path="/trash" element={
+                <Trash 
+                  notes={notes}
+                  addNote={addNote} 
+                  deleteNote={deleteNote} 
+                  addLabel={addLabel}
+                  clearLabels={clearLabels}
+                  removeLabel={removeLabel}
+                  archiveNote={archiveNote}
+                  permaDeleteNote={permaDeleteNote}
+                  recoverNote={recoverNote}
+                />}>
+              </Route>
+
             </Routes>
           </div>
         </div>
