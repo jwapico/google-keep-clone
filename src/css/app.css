@@ -498,4 +498,32 @@ body main .routes .Labels .labels-notes-container .notes-container .note {
   -webkit-margin-start: 0;
           margin-inline-start: 0;
 }
+
+body main .routes .Labels .empty-labels {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  padding-block: 5rem;
+}
+
+body main .routes .Labels .empty-labels i {
+  color: #37383b;
+  font-size: 100px;
+}
+
+body main .routes .Labels .empty-labels p {
+  font-size: 23px;
+  color: #aeafb3;
+}
 /*# sourceMappingURL=app.css.map */

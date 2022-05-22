@@ -406,6 +406,25 @@ body {
             }
           }
         }
+
+        .empty-labels {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          padding-block: 5rem;
+          
+          i {
+            color: #37383b;
+            font-size: 100px;
+          }
+
+          p {
+            font-size: 23px;
+            color: #aeafb3;
+          }
+        }
       }
     }
   }
