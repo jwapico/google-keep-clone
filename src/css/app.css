@@ -462,8 +462,7 @@ body main .routes .Notes .empty-notes {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100%;
-  padding-block: 5rem;
+  height: 75vh;
 }
 
 body main .routes .Notes .empty-notes i {
