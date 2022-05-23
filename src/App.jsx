@@ -13,7 +13,7 @@ import Notes from "./components/Notes"
 import ThemeContext from "./ThemeContext"
 
 function App() {
-  const [isNavOpen, setIsNavOpen] = useState(true)
+  const [isNavOpen, setIsNavOpen] = useState(false)
   const [sectionLinks, setSectionLinks] = useState([
     {to: "/", text: "Notes", id: 1, isSelected: true, icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"></path></svg>},
     {to: "/labels", text: "Labels", id: 2, isSelected: false, icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16zM16 17H5V7h11l3.55 5L16 17z"></path></svg>},
@@ -28,11 +28,20 @@ function App() {
 
   // nav 
     function toggleIsNavOpen() {
-      setIsNavOpen(prevIsOpen => !prevIsOpen)
+      if (window.innerWidth < 800) {
+        setIsNavOpen(false)
+      } else {
+        setIsNavOpen(prevIsOpen => !prevIsOpen)
+      }
     }
 
     function openNav() {
-      setIsNavOpen(true)
+      if (window.innerWidth < 800) {
+        console.log("test")
+        setIsNavOpen(false)
+      } else {
+        setIsNavOpen(true)
+      }
     }
   // /nav
 

@@ -294,6 +294,12 @@ html.light-mode {
           margin-inline-end: 1.3rem;
 }
 
+@media only screen and (max-width: 750px) {
+  .app .home__header .ham-logo-keep-container .logo, .app .home__header .ham-logo-keep-container a {
+    display: none;
+  }
+}
+
 .app .home__header form {
   width: 100%;
 }
@@ -508,6 +514,14 @@ html.light-mode {
   background-color: #45464b96;
 }
 
+@media only screen and (max-width: 1000px) {
+  .app nav .nav__link {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
+
 .app main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -539,7 +553,7 @@ html.light-mode {
   border-radius: 10px;
   padding: 1em;
   margin: 1%;
-  width: 31.3333%;
+  width: 22%;
   overflow-wrap: break-word;
   position: relative;
   -webkit-transition: all .3s;
@@ -754,6 +768,27 @@ html.light-mode {
   border: 1px solid rgba(255, 255, 255, 0.781);
 }
 
+@media only screen and (max-width: 2000px) {
+  .app main .routes .route .notes-container .note {
+    margin: 1%;
+    width: 31.3333%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .app main .routes .route .notes-container .note {
+    width: 46%;
+    margin: 2%;
+    border: 1px solid red;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .app main .routes .route .notes-container .note {
+    width: 100%;
+  }
+}
+
 .app main .routes .route .notes-container h2, .app main .routes .route .notes-container p {
   margin: 0 0 1em 0;
 }
@@ -838,6 +873,7 @@ html.light-mode {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 60%;
+  max-width: 800px;
   margin: auto;
   border: 1px solid rgba(211, 211, 211, 0.438);
   border-radius: 10px;
@@ -1027,5 +1063,37 @@ html.light-mode {
 .app main .routes .Trash p {
   font-size: 23px;
   color: #aeafb3;
+}
+
+@media only screen and (max-width: 750px) {
+  .app main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .app main nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 1em auto;
+  }
+  .app main nav .nav__link {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: .5em .5em;
+    margin: 1em;
+  }
+  .app main nav .nav__link p {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+  }
 }
 /*# sourceMappingURL=app.css.map */

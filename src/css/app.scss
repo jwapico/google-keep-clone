@@ -10,6 +10,24 @@ html {
   }
 }
 
+@mixin desktop {
+  @media only screen and (max-width: 2000px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+   @media only screen and (max-width: 1000px) {
+     @content;
+   }
+}
+
+@mixin phone {
+  @media only screen and (max-width: 750px) {
+    @content
+  }
+}
+
 .app {
   font-family: 'Poppins', sans-serif;
   background-color: #202124;
@@ -311,6 +329,12 @@ html {
           margin-inline-end: 1.3rem;
         } 
       }
+
+      @include phone {
+        .logo, a {
+          display: none;
+        }
+      }
     }
 
     form {
@@ -490,6 +514,12 @@ html {
         background-color: #45464b96;
       }
     }
+
+    @include tablet {
+      .nav__link {
+        width: fit-content;
+      }
+    }
   }
 
   main {
@@ -512,7 +542,7 @@ html {
             border-radius: 10px;
             padding: 1em;
             margin: 1%;
-            width: 31.3333%;
+            width: 22%;
             overflow-wrap: break-word;
             position: relative;
             transition: all .3s;
@@ -689,6 +719,27 @@ html {
             }
           }
 
+          @include desktop {
+            .note {
+              margin: 1%;
+              width: 31.3333%;
+            }
+          }
+
+          @include tablet {
+            .note {
+              width: 46%;
+              margin: 2%;
+              border: 1px solid red;
+            }
+          }
+
+          @include phone {
+            .note {
+              width: 100%;
+            }
+          }
+
           h2, p {
             margin: 0 0 1em 0;
           }
@@ -762,6 +813,7 @@ html {
           display: flex;
           flex-direction: column;
           width: 60%;
+          max-width: 800px;
           margin: auto;
           border: 1px solid rgba(211, 211, 211, 0.438);
           border-radius: 10px;
@@ -914,6 +966,31 @@ html {
         p {
           font-size: 23px;
           color: #aeafb3;
+        }
+      }
+    }
+  }
+
+  @include phone {
+    main {
+      display: flex;
+      flex-direction: column;
+
+      nav {
+        display: flex;
+        // flex-direction: column;
+        margin: 1em auto;
+
+        .nav__link {
+          width: fit-content;
+          display: flex;
+          padding: .5em .5em;
+          margin: 1em;
+
+          p {
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+          }
         }
       }
     }
