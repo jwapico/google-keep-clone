@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Routes, Route } from "react-router-dom"
 
 import "./css/normalize.css"
@@ -22,72 +22,111 @@ function App() {
     {to: "/trash", text: "Trash", id: 4, isSelected: false, icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z"></path><path d="M9 8h2v9H9zm4 0h2v9h-2z"></path></svg>},
   ])
   const [notes, setNotes] = useState([])
+  const [filteredNotes, setFilteredNotes] = useState([])
+  const [isSearching, setIsSearching] = useState(false)
+  const [searchTerm, setSearchTerm] = useState("")
 
-  function toggleIsNavOpen() {
-    setIsNavOpen(prevIsOpen => !prevIsOpen)
-  }
+  // nav 
+    function toggleIsNavOpen() {
+      setIsNavOpen(prevIsOpen => !prevIsOpen)
+    }
 
-  function openNav() {
-    setIsNavOpen(true)
-  }
+    function openNav() {
+      setIsNavOpen(true)
+    }
+  // /nav
 
-  function changeIsSelected(id) {
-    openNav()
-    setSectionLinks(prevLinks => {
-      return prevLinks.map(link => {
-        return link.id === id ? {...link, isSelected: true} : {...link, isSelected: false} 
+  // link
+    function changeIsSelected(id) {
+      openNav()
+      setSectionLinks(prevLinks => {
+        return prevLinks.map(link => {
+          return link.id === id ? {...link, isSelected: true} : {...link, isSelected: false} 
+        })
       })
-    })
+    }
+  // /link
+
+
+  // ===========================
+  //    NOTE
+  // ===========================
+    function addNote(note) {
+      setNotes(prevNotes => [note, ...prevNotes])
+    }
+
+    function deleteNote(id) {
+      setNotes(prevNotes => prevNotes.map(note => {
+        return note.id === id ? {...note, isDeleted: !note.isDeleted} : note
+      }))
+    }
+
+    function permaDeleteNote(id) {
+      setNotes(prevNotes => prevNotes.filter(note => note.id !== id))
+    }
+
+    function recoverNote(id) {
+      setNotes(prevNotes => prevNotes.map(note => note.id === id ? {...note, isDeleted: !note.isDeleted} : note))
+    }
+
+    function archiveNote(id) {
+      setNotes(prevNotes => prevNotes.map(note => {
+        return note.id === id ? {...note, isArchived: !note.isArchived} : note
+      }))
+    }
+
+
+    function addLabel(id, labelText) {
+      setNotes(prevNotes => prevNotes.map(
+        (note, index) => index === id && labelText ? {...note, labels: [...note.labels, labelText]} : note
+      ))
+    }
+
+    function removeLabel(id, labelText) {
+      setNotes(prevNotes => prevNotes.map(note => {
+        if (note.id === id) {
+          return {...note, labels: note.labels.filter(label => label !== labelText)}
+        }
+        return note
+      }))
+    }
+
+    function clearLabels(id) {
+      setNotes(prevNotes => prevNotes.map(note => {
+        return note.id === id ? {...note, labels: []} : note
+      }))
+    }
+  // ===========================
+  //    /NOTE
+  // ===========================
+
+  
+  // search/filtering
+  function makeSearch(text) {
+    setIsSearching(true)
+    setSearchTerm(text)
+    const loweredText = text.toLowerCase()
+
+    const filteredItems = notes.filter(note => note.title.toLowerCase().includes(loweredText) || note.noteText.toLowerCase().includes(loweredText) || note.labels.filter(label => label.toLowerCase().includes(loweredText)).length)
+
+    setFilteredNotes(filteredItems)
   }
 
-  function addNote(note) {
-    setNotes(prevNotes => [note, ...prevNotes])
+  function endSearch() {
+    setIsSearching(false)
   }
 
-  function deleteNote(id) {
-    setNotes(prevNotes => prevNotes.map(note => {
-      return note.id === id ? {...note, isDeleted: !note.isDeleted} : note
-    }))
-  }
-
-  function permaDeleteNote(id) {
-    setNotes(prevNotes => prevNotes.filter(note => note.id !== id))
-  }
-
-  function recoverNote(id) {
-    setNotes(prevNotes => prevNotes.map(note => note.id === id ? {...note, isDeleted: !note.isDeleted} : note))
-  }
-
-  function addLabel(id, labelText) {
-    setNotes(prevNotes => prevNotes.map(
-      (note, index) => index === id && labelText ? {...note, labels: [...note.labels, labelText]} : note
-    ))
-  }
-
-  function removeLabel(id, labelText) {
-    setNotes(prevNotes => prevNotes.map(note => {
-      if (note.id === id) {
-        return {...note, labels: note.labels.filter(label => label !== labelText)}
-      }
-      return note
-    }))
-  }
-
-  function clearLabels(id) {
-    setNotes(prevNotes => prevNotes.map(note => {
-      return note.id === id ? {...note, labels: []} : note
-    }))
-  }
-
-  function archiveNote(id) {
-    setNotes(prevNotes => prevNotes.map(note => {
-      return note.id === id ? {...note, isArchived: !note.isArchived} : note
-    }))
-  }
+  useEffect(() => {
+    const filteredItems = notes.filter(note => note.title.toLowerCase().includes(searchTerm.toLowerCase()) || note.noteText.toLowerCase().includes(searchTerm.toLowerCase()) || note.labels.filter(label => label.toLowerCase().includes(searchTerm.toLowerCase())).length)
+    setFilteredNotes(filteredItems)
+  }, [notes])
+  // /search / filtering
+ 
+  document.addEventListener("keydown", (e) => {if (e.key === "Escape") {setIsSearching(false)}})
 
   return (
     <>
-      <Header toggleIsNavOpen={toggleIsNavOpen}/>
+      <Header toggleIsNavOpen={toggleIsNavOpen} makeSearch={makeSearch} isSearching={isSearching} searchTerm={searchTerm} endSearch={endSearch}/>
 
       <main>
         <NavSection
@@ -102,43 +141,46 @@ function App() {
 
               <Route exact path="/" element={
                 <Notes 
-                  notes={notes} 
+                  notes={isSearching ? filteredNotes : notes} 
                   addNote={addNote} 
                   deleteNote={deleteNote} 
                   addLabel={addLabel}
                   clearLabels={clearLabels}
                   removeLabel={removeLabel}
                   archiveNote={archiveNote}
+                  isSearching={isSearching}
                   />}>
               </Route>
 
               <Route path="/labels" element={
                 <Labels 
-                  notes={notes}
+                  notes={isSearching ? filteredNotes : notes}
                   addNote={addNote} 
                   deleteNote={deleteNote} 
                   addLabel={addLabel}
                   clearLabels={clearLabels}
                   removeLabel={removeLabel}
                   archiveNote={archiveNote}
+                  isSearching={isSearching}
                   />}>
               </Route>
 
               <Route path="/archive" element={
                 <Archive 
-                  notes={notes}
+                  notes={isSearching ? filteredNotes : notes}
                   addNote={addNote} 
                   deleteNote={deleteNote} 
                   addLabel={addLabel}
                   clearLabels={clearLabels}
                   removeLabel={removeLabel}
                   archiveNote={archiveNote}
+                  isSearching={isSearching}
                 />}>
               </Route>
 
               <Route path="/trash" element={
                 <Trash 
-                  notes={notes}
+                  notes={isSearching ? filteredNotes : notes}
                   addNote={addNote} 
                   deleteNote={deleteNote} 
                   addLabel={addLabel}
@@ -147,6 +189,7 @@ function App() {
                   archiveNote={archiveNote}
                   permaDeleteNote={permaDeleteNote}
                   recoverNote={recoverNote}
+                  isSearching={isSearching}
                 />}>
               </Route>
 
