@@ -3,13 +3,190 @@
           box-sizing: border-box;
 }
 
-body {
+.app {
   font-family: 'Poppins', sans-serif;
   background-color: #202124;
   color: #e2e2e2;
 }
 
-body .home__header {
+.app.light-mode {
+  background-color: white;
+}
+
+.app.light-mode nav .nav__link svg {
+  fill: #2d2e30;
+}
+
+.app.light-mode nav .nav__link p {
+  color: #2d2e30;
+}
+
+.app.light-mode nav .nav__link.selected {
+  background-color: #feefc3;
+}
+
+.app.light-mode nav .nav__link.selected:hover, .app.light-mode nav .nav__link.selected:focus {
+  background-color: #f0d37b;
+}
+
+.app.light-mode nav .nav__link:hover, .app.light-mode nav .nav__link:focus {
+  background-color: #d8d8d896;
+}
+
+.app.light-mode .routes .route .notes-container .note {
+  border-color: #b6b6b69d;
+  color: rgba(0, 0, 0, 0.637);
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.app.light-mode .routes .route .notes-container .note p {
+  color: #202124ab;
+}
+
+.app.light-mode .routes .route .notes-container .note:hover {
+  -webkit-box-shadow: 7px 7px 20px #0000003a;
+          box-shadow: 7px 7px 20px #0000003a;
+}
+
+.app.light-mode .routes .route .notes-container .note .labels-container .note-label {
+  background-color: #e4e4e4;
+  color: #2d2e30;
+}
+
+.app.light-mode .routes .route .notes-container .note .labels-container .note-label:hover {
+  background-color: rgba(255, 162, 162, 0.664);
+}
+
+.app.light-mode .routes .route .notes-container .note .deleted-overlay {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.app.light-mode .routes .route .notes-container .note .deleted-overlay button {
+  background-color: white;
+  color: #202124;
+  border: 1px solid transparent;
+}
+
+.app.light-mode .routes .route .notes-container .note .deleted-overlay button:hover {
+  background-color: white;
+  border-color: #7c7c7c;
+  color: #202124;
+  -webkit-box-shadow: 1px 1px 3px #7070705b;
+          box-shadow: 1px 1px 3px #7070705b;
+}
+
+.app.light-mode .routes .route .notes-container .note .deleted-overlay:hover {
+  background-color: #5253563b;
+  border: none;
+}
+
+.app.light-mode .routes .route .notes-container .note .label-modal {
+  background-color: white;
+  border: 1px solid #e2e2e2;
+  -webkit-box-shadow: 3px 3px 8px #5253561f;
+          box-shadow: 3px 3px 8px #5253561f;
+}
+
+.app.light-mode .routes .route .notes-container .note .label-modal input {
+  color: #202124;
+}
+
+.app.light-mode .routes .route .notes-container .note .label-modal .modal-options button {
+  color: #2021248a;
+  border: 1px solid transparent;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.app.light-mode .routes .route .notes-container .note .label-modal .modal-options button:hover {
+  background-color: transparent;
+  border-color: #99999a;
+}
+
+.app.light-mode .routes .route .notes-container .note .label-modal .modal-options .modal-icons-container i:hover {
+  background-color: #f1f1f1;
+}
+
+.app.light-mode .routes .route .notes-container .note:hover {
+  border: none;
+}
+
+.app.light-mode .routes .route .notes-container .note .icons *:hover, .app.light-mode .routes .route .notes-container .note .icons *:focus {
+  fill: #202124;
+  color: #202124;
+}
+
+.app.light-mode .routes .Notes .take-a-note {
+  color: #2d2e30;
+  border-color: #a3a5a86e;
+}
+
+.app.light-mode .routes .Notes .note-field {
+  -webkit-box-shadow: 3px 3px 8px #57575a88;
+          box-shadow: 3px 3px 8px #57575a88;
+}
+
+.app.light-mode .routes .Notes .note-field input, .app.light-mode .routes .Notes .note-field textarea {
+  color: #2b2b2b;
+}
+
+.app.light-mode .routes .Notes .note-field .note-field-buttons button {
+  color: #37383bad;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.app.light-mode .routes .Notes .note-field .note-field-buttons button:hover {
+  color: rgba(0, 0, 0, 0.822);
+}
+
+.app.light-mode .routes .Notes .empty-notes i {
+  color: #5253562d;
+}
+
+.app.light-mode .routes .Notes .empty-notes p {
+  color: #36363698;
+}
+
+.app.light-mode .routes .Labels .labels-header, .app.light-mode .routes .Labels .label-name {
+  color: #4f4f52;
+}
+
+.app.light-mode .routes .Labels .empty-labels i {
+  color: #5253562d;
+}
+
+.app.light-mode .routes .Labels .empty-labels p {
+  color: #36363698;
+}
+
+.app.light-mode .routes .Archive .archive-header {
+  color: #4f4f52;
+}
+
+.app.light-mode .routes .Archive .empty-archive i {
+  color: #5253562d;
+}
+
+.app.light-mode .routes .Archive .empty-archive p {
+  color: #36363698;
+}
+
+.app.light-mode .routes .Trash .deleted-header {
+  color: #4f4f52;
+}
+
+.app.light-mode .routes .Trash .empty-trash i {
+  color: #5253562d;
+}
+
+.app.light-mode .routes .Trash .empty-trash p {
+  color: #36363698;
+}
+
+.app .home__header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20,7 +197,50 @@ body .home__header {
   border-bottom: 1px solid #727272a8;
 }
 
-body .home__header .ham-logo-keep-container {
+.app .home__header.light-mode {
+  background-color: white;
+}
+
+.app .home__header.light-mode .ham-logo-keep-container svg {
+  fill: #4d4d4d;
+}
+
+.app .home__header.light-mode .ham-logo-keep-container h1 {
+  color: #4d4d4d;
+}
+
+.app .home__header.light-mode form svg {
+  fill: #57575a;
+}
+
+.app .home__header.light-mode form input {
+  background-color: #f1f3f4;
+}
+
+.app .home__header.light-mode form input:focus {
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.322);
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.322);
+}
+
+.app .home__header.light-mode form input.searching {
+  background-color: #ddf7dd;
+}
+
+.app .home__header.light-mode .header-btns-container i {
+  color: #4d4d4dbb;
+}
+
+.app .home__header.light-mode .header-btns-container button {
+  color: #2d2e30;
+  border: none;
+}
+
+.app .home__header.light-mode .header-btns-container button:hover {
+  -webkit-box-shadow: 2px 2px 5px #57575a83;
+          box-shadow: 2px 2px 5px #57575a83;
+}
+
+.app .home__header .ham-logo-keep-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -30,7 +250,7 @@ body .home__header .ham-logo-keep-container {
   margin-inline: 1.5em;
 }
 
-body .home__header .ham-logo-keep-container svg {
+.app .home__header .ham-logo-keep-container svg {
   font-size: 0px;
   width: 25px;
   fill: #b6b6b6;
@@ -40,35 +260,35 @@ body .home__header .ham-logo-keep-container svg {
   top: 2px;
 }
 
-body .home__header .ham-logo-keep-container svg:hover, body .home__header .ham-logo-keep-container svg:focus {
+.app .home__header .ham-logo-keep-container svg:hover, .app .home__header .ham-logo-keep-container svg:focus {
   cursor: pointer;
   fill: white;
   -webkit-transform: scale(110%);
           transform: scale(110%);
 }
 
-body .home__header .ham-logo-keep-container .logo {
+.app .home__header .ham-logo-keep-container .logo {
   width: 2rem;
   margin-inline: 1.3rem;
 }
 
-body .home__header .ham-logo-keep-container a {
+.app .home__header .ham-logo-keep-container a {
   text-decoration: none;
   color: white;
 }
 
-body .home__header .ham-logo-keep-container a h1 {
+.app .home__header .ham-logo-keep-container a h1 {
   font-weight: 500;
   font-size: 22px;
   -webkit-margin-end: 1.3rem;
           margin-inline-end: 1.3rem;
 }
 
-body .home__header form {
+.app .home__header form {
   width: 100%;
 }
 
-body .home__header form svg {
+.app .home__header form svg {
   position: relative;
   fill: #b4b4b4;
   left: 1.35em;
@@ -76,7 +296,7 @@ body .home__header form svg {
   z-index: 1;
 }
 
-body .home__header form input {
+.app .home__header form input {
   padding: .8em 4em;
   background-color: #4d4d4d;
   border: none;
@@ -89,32 +309,32 @@ body .home__header form input {
   color: white;
 }
 
-body .home__header form input.searching {
+.app .home__header form input.searching {
   background-color: rgba(95, 158, 95, 0.336);
 }
 
-body .home__header form input::-webkit-input-placeholder {
+.app .home__header form input::-webkit-input-placeholder {
   color: #b7b7b8;
 }
 
-body .home__header form input:-ms-input-placeholder {
+.app .home__header form input:-ms-input-placeholder {
   color: #b7b7b8;
 }
 
-body .home__header form input::-ms-input-placeholder {
+.app .home__header form input::-ms-input-placeholder {
   color: #b7b7b8;
 }
 
-body .home__header form input::placeholder {
+.app .home__header form input::placeholder {
   color: #b7b7b8;
 }
 
-body .home__header form input:focus {
+.app .home__header form input:focus {
   background-color: white;
   color: black;
 }
 
-body .home__header .header-btns-container {
+.app .home__header .header-btns-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -123,7 +343,7 @@ body .home__header .header-btns-container {
           align-items: center;
 }
 
-body .home__header .header-btns-container button {
+.app .home__header .header-btns-container button {
   font-size: 14px;
   color: white;
   background-color: transparent;
@@ -136,27 +356,86 @@ body .home__header .header-btns-container button {
   border: 1px solid transparent;
 }
 
-body .home__header .header-btns-container button:hover {
-  -webkit-transform: translate(-2px, -2px);
-          transform: translate(-2px, -2px);
+.app .home__header .header-btns-container button:hover {
+  -webkit-transform: translate(-1px, -1px);
+          transform: translate(-1px, -1px);
   -webkit-box-shadow: 3px 3px 10px rgba(20, 20, 20, 0.993);
           box-shadow: 3px 3px 10px rgba(20, 20, 20, 0.993);
   border-color: #ffbb00d0;
 }
 
-body .home__header .header-btns-container .fa-gear {
-  font-size: 23px;
-  color: #99999a;
-  margin-inline: 1em 2em;
+.app .home__header .header-btns-container .toggler-container {
+  margin-inline: 2em;
 }
 
-body nav {
+.app .home__header .header-btns-container .toggler-container .switch {
+  position: relative;
+  display: block;
+  width: 90px;
+  height: 55px;
+  -webkit-transform: scale(0.6);
+          transform: scale(0.6);
+}
+
+.app .home__header .header-btns-container .toggler-container .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(230, 230, 230, 0.096);
+  -webkit-transition: .5s;
+  transition: .5s;
+  border: 4px solid transparent;
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.274);
+          box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.274);
+}
+
+.app .home__header .header-btns-container .toggler-container .slider::before {
+  position: absolute;
+  content: "";
+  bottom: 14px;
+  top: 8px;
+  background-color: #ecd798;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.app .home__header .header-btns-container .toggler-container .switch input {
+  display: none;
+}
+
+.app .home__header .header-btns-container .toggler-container input:checked + .slider {
+  background-color: #101111cb;
+}
+
+.app .home__header .header-btns-container .toggler-container input:checked + .slider::before {
+  -webkit-transform: translateX(43px) rotateZ(45deg);
+          transform: translateX(43px) rotateZ(45deg);
+  background-color: #ffbb01;
+}
+
+.app .home__header .header-btns-container .toggler-container .slider.round {
+  border-radius: 35px;
+}
+
+.app .home__header .header-btns-container .toggler-container .slider.round::before {
+  width: 43%;
+  height: 43%;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  -webkit-transform: rotateZ(-45deg);
+          transform: rotateZ(-45deg);
+}
+
+.app nav {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
 }
 
-body nav .nav__link {
+.app nav .nav__link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -173,13 +452,13 @@ body nav .nav__link {
   transition: background-color .3s;
 }
 
-body nav .nav__link svg {
+.app nav .nav__link svg {
   fill: #e2e2e2;
   -webkit-transform: scale(105%);
           transform: scale(105%);
 }
 
-body nav .nav__link p {
+.app nav .nav__link p {
   color: white;
   text-decoration: none;
   font-size: 14px;
@@ -191,7 +470,7 @@ body nav .nav__link p {
   transition: opacity .4s;
 }
 
-body nav .nav__link.closed {
+.app nav .nav__link.closed {
   margin: 1em .5em;
   padding: 1em;
   border-radius: 50%;
@@ -200,41 +479,41 @@ body nav .nav__link.closed {
   width: max-content;
 }
 
-body nav .nav__link.closed p {
+.app nav .nav__link.closed p {
   width: 0px;
   margin: 0;
   overflow: hidden;
   opacity: 0;
 }
 
-body nav .nav__link.selected {
+.app nav .nav__link.selected {
   background-color: #41331c;
 }
 
-body nav .nav__link.selected:hover, body nav .nav__link.selected:focus {
+.app nav .nav__link.selected:hover, .app nav .nav__link.selected:focus {
   background-color: #584424;
 }
 
-body nav .nav__link:hover, body nav .nav__link:focus {
+.app nav .nav__link:hover, .app nav .nav__link:focus {
   background-color: #45464b96;
 }
 
-body main {
+.app main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-body main .routes {
+.app main .routes {
   width: 100%;
 }
 
-body main .routes .route {
+.app main .routes .route {
   padding: 1.5em;
   height: 87vh;
 }
 
-body main .routes .route .notes-container {
+.app main .routes .route .notes-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -245,7 +524,7 @@ body main .routes .route .notes-container {
           align-items: start;
 }
 
-body main .routes .route .notes-container .note {
+.app main .routes .route .notes-container .note {
   border: 1px solid #5f6368;
   border-radius: 10px;
   padding: 1em;
@@ -257,25 +536,25 @@ body main .routes .route .notes-container .note {
   transition: all .3s;
 }
 
-body main .routes .route .notes-container .note:hover {
+.app main .routes .route .notes-container .note:hover {
   -webkit-box-shadow: 7px 7px 20px #00000098;
           box-shadow: 7px 7px 20px #00000098;
   -webkit-transform: translate(-4px, -4px);
           transform: translate(-4px, -4px);
 }
 
-body main .routes .route .notes-container .note h2 {
+.app main .routes .route .notes-container .note h2 {
   -webkit-margin-after: .5em;
           margin-block-end: .5em;
 }
 
-body main .routes .route .notes-container .note p {
+.app main .routes .route .notes-container .note p {
   -webkit-margin-after: .5em;
           margin-block-end: .5em;
   color: #b7b7b8;
 }
 
-body main .routes .route .notes-container .note .labels-container {
+.app main .routes .route .notes-container .note .labels-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -283,7 +562,7 @@ body main .routes .route .notes-container .note .labels-container {
       flex-wrap: wrap;
 }
 
-body main .routes .route .notes-container .note .labels-container .note-label {
+.app main .routes .route .notes-container .note .labels-container .note-label {
   font-size: 12px;
   margin: 0 1em 0em 0;
   background-color: #37383b;
@@ -296,7 +575,7 @@ body main .routes .route .notes-container .note .labels-container .note-label {
           margin-block-start: 1em;
 }
 
-body main .routes .route .notes-container .note .labels-container button {
+.app main .routes .route .notes-container .note .labels-container button {
   color: rgba(255, 255, 255, 0.76);
   border: none;
   -webkit-transition: all .2s;
@@ -304,26 +583,26 @@ body main .routes .route .notes-container .note .labels-container button {
   cursor: pointer;
 }
 
-body main .routes .route .notes-container .note .labels-container button:hover {
+.app main .routes .route .notes-container .note .labels-container button:hover {
   background-color: #5e3b3b;
 }
 
-body main .routes .route .notes-container .note.deleted-note {
+.app main .routes .route .notes-container .note.deleted-note {
   -webkit-transition: all .3s;
   transition: all .3s;
 }
 
-body main .routes .route .notes-container .note.deleted-note p {
+.app main .routes .route .notes-container .note.deleted-note p {
   font-size: 16px;
 }
 
-body main .routes .route .notes-container .note.deleted-note:hover {
+.app main .routes .route .notes-container .note.deleted-note:hover {
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
   border-color: transparent;
 }
 
-body main .routes .route .notes-container .note .deleted-overlay {
+.app main .routes .route .notes-container .note .deleted-overlay {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -343,7 +622,7 @@ body main .routes .route .notes-container .note .deleted-overlay {
           align-items: center;
 }
 
-body main .routes .route .notes-container .note .deleted-overlay button {
+.app main .routes .route .notes-container .note .deleted-overlay button {
   color: #e2e2e2;
   background-color: #5c5c5ccc;
   border: none;
@@ -355,16 +634,16 @@ body main .routes .route .notes-container .note .deleted-overlay button {
   cursor: pointer;
 }
 
-body main .routes .route .notes-container .note .deleted-overlay button.delete-btn {
+.app main .routes .route .notes-container .note .deleted-overlay button.delete-btn {
   -webkit-margin-end: 1em;
           margin-inline-end: 1em;
 }
 
-body main .routes .route .notes-container .note .deleted-overlay button:hover {
+.app main .routes .route .notes-container .note .deleted-overlay button:hover {
   background-color: #616161;
   color: white;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  -webkit-transform: translate(-1px, -1px);
+          transform: translate(-1px, -1px);
   -webkit-box-shadow: 2px 2px 5px rgba(20, 20, 20, 0.644);
           box-shadow: 2px 2px 5px rgba(20, 20, 20, 0.644);
   -webkit-backdrop-filter: blur(5px);
@@ -372,11 +651,11 @@ body main .routes .route .notes-container .note .deleted-overlay button:hover {
   border-color: transparent;
 }
 
-body main .routes .route .notes-container .note .deleted-overlay:hover {
+.app main .routes .route .notes-container .note .deleted-overlay:hover {
   background-color: #18181ab9;
 }
 
-body main .routes .route .notes-container .note .label-modal {
+.app main .routes .route .notes-container .note .label-modal {
   width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -396,12 +675,12 @@ body main .routes .route .notes-container .note .label-modal {
   z-index: 1;
 }
 
-body main .routes .route .notes-container .note .label-modal p {
+.app main .routes .route .notes-container .note .label-modal p {
   margin: 0 0 .5em 0;
   font-size: 16px;
 }
 
-body main .routes .route .notes-container .note .label-modal input {
+.app main .routes .route .notes-container .note .label-modal input {
   width: 100%;
   background-color: transparent;
   border: none;
@@ -412,7 +691,7 @@ body main .routes .route .notes-container .note .label-modal input {
   outline: none;
 }
 
-body main .routes .route .notes-container .note .label-modal .modal-options {
+.app main .routes .route .notes-container .note .label-modal .modal-options {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -426,7 +705,7 @@ body main .routes .route .notes-container .note .label-modal .modal-options {
           margin-block-start: 1em;
 }
 
-body main .routes .route .notes-container .note .label-modal .modal-options button {
+.app main .routes .route .notes-container .note .label-modal .modal-options button {
   font-size: 12px;
   background-color: transparent;
   border: none;
@@ -441,11 +720,11 @@ body main .routes .route .notes-container .note .label-modal .modal-options butt
   border-radius: 99px;
 }
 
-body main .routes .route .notes-container .note .label-modal .modal-options button:hover {
+.app main .routes .route .notes-container .note .label-modal .modal-options button:hover {
   background-color: #525356;
 }
 
-body main .routes .route .notes-container .note .label-modal .modal-options .modal-icons-container i {
+.app main .routes .route .notes-container .note .label-modal .modal-options .modal-icons-container i {
   cursor: pointer;
   padding: .6em;
   -webkit-transition: all .2s;
@@ -457,19 +736,19 @@ body main .routes .route .notes-container .note .label-modal .modal-options .mod
           margin-inline-end: .5em;
 }
 
-body main .routes .route .notes-container .note .label-modal .modal-options .modal-icons-container i:hover {
+.app main .routes .route .notes-container .note .label-modal .modal-options .modal-icons-container i:hover {
   background-color: #525356;
 }
 
-body main .routes .route .notes-container .note.open-modal {
+.app main .routes .route .notes-container .note.open-modal {
   border: 1px solid rgba(255, 255, 255, 0.781);
 }
 
-body main .routes .route .notes-container h2, body main .routes .route .notes-container p {
+.app main .routes .route .notes-container h2, .app main .routes .route .notes-container p {
   margin: 0 0 1em 0;
 }
 
-body main .routes .route .notes-container .icons {
+.app main .routes .route .notes-container .icons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -485,14 +764,14 @@ body main .routes .route .notes-container .icons {
   transition: max-height .4s, opacity .2s;
 }
 
-body main .routes .route .notes-container .icons i {
+.app main .routes .route .notes-container .icons i {
   font-size: 18px;
   position: relative;
   top: 1px;
   right: 2px;
 }
 
-body main .routes .route .notes-container .icons * {
+.app main .routes .route .notes-container .icons * {
   -webkit-margin-start: 1.5em;
           margin-inline-start: 1.5em;
   -webkit-transition: all .2s;
@@ -501,12 +780,12 @@ body main .routes .route .notes-container .icons * {
           margin-block-start: 1em;
 }
 
-body main .routes .route .notes-container .icons *:hover, body main .routes .route .notes-container .icons *:focus {
+.app main .routes .route .notes-container .icons *:hover, .app main .routes .route .notes-container .icons *:focus {
   fill: #eeeeee;
   color: #eeeeee;
 }
 
-body main .routes .route .notes-container .icons .fa-bookmark {
+.app main .routes .route .notes-container .icons .fa-bookmark {
   opacity: .9;
   position: relative;
   top: 5px;
@@ -514,16 +793,16 @@ body main .routes .route .notes-container .icons .fa-bookmark {
   color: #99999a;
 }
 
-body main .routes .route .notes-container .icons .fa-bookmark:hover, body main .routes .route .notes-container .icons .fa-bookmark:focus {
+.app main .routes .route .notes-container .icons .fa-bookmark:hover, .app main .routes .route .notes-container .icons .fa-bookmark:focus {
   color: #f5f5f5;
 }
 
-body main .routes .route .notes-container .icons.hidden {
+.app main .routes .route .notes-container .icons.hidden {
   max-height: 0;
   opacity: 0;
 }
 
-body main .routes .Notes .take-a-note {
+.app main .routes .Notes .take-a-note {
   display: block;
   width: 60%;
   margin: auto;
@@ -536,11 +815,11 @@ body main .routes .Notes .take-a-note {
   border-radius: 10px;
 }
 
-body main .routes .Notes .take-a-note:disabled {
+.app main .routes .Notes .take-a-note:disabled {
   cursor: not-allowed;
 }
 
-body main .routes .Notes .note-field {
+.app main .routes .Notes .note-field {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -557,7 +836,7 @@ body main .routes .Notes .note-field {
           box-shadow: 2px 2px 2px black;
 }
 
-body main .routes .Notes .note-field input, body main .routes .Notes .note-field textarea {
+.app main .routes .Notes .note-field input, .app main .routes .Notes .note-field textarea {
   background-color: transparent;
   border-radius: 10px;
   border: none;
@@ -566,13 +845,13 @@ body main .routes .Notes .note-field input, body main .routes .Notes .note-field
   color: #eee;
 }
 
-body main .routes .Notes .note-field textarea {
+.app main .routes .Notes .note-field textarea {
   font-size: 14px;
   resize: none;
   padding-block: 1em;
 }
 
-body main .routes .Notes .note-field .note-field-buttons {
+.app main .routes .Notes .note-field .note-field-buttons {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
@@ -582,7 +861,7 @@ body main .routes .Notes .note-field .note-field-buttons {
   padding-block: .5em;
 }
 
-body main .routes .Notes .note-field .note-field-buttons button {
+.app main .routes .Notes .note-field .note-field-buttons button {
   background-color: transparent;
   border: none;
   color: #e2e2e2;
@@ -596,11 +875,11 @@ body main .routes .Notes .note-field .note-field-buttons button {
   transition: all .2s;
 }
 
-body main .routes .Notes .note-field .note-field-buttons button:hover, body main .routes .Notes .note-field .note-field-buttons button:focus {
+.app main .routes .Notes .note-field .note-field-buttons button:hover, .app main .routes .Notes .note-field .note-field-buttons button:focus {
   background-color: #68686825;
 }
 
-body main .routes .Notes .empty-notes {
+.app main .routes .Notes .empty-notes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -617,40 +896,40 @@ body main .routes .Notes .empty-notes {
   height: 73vh;
 }
 
-body main .routes .Notes .empty-notes i {
+.app main .routes .Notes .empty-notes i {
   color: #37383b;
   font-size: 100px;
 }
 
-body main .routes .Notes .empty-notes p {
+.app main .routes .Notes .empty-notes p {
   font-size: 23px;
   color: #aeafb3;
 }
 
-body main .routes .Labels .labels-header {
+.app main .routes .Labels .labels-header {
   margin-block: 0 .9em;
   padding-block: 0 .7em;
   border-bottom: 1px solid #99999a;
 }
 
-body main .routes .Labels .label-name {
+.app main .routes .Labels .label-name {
   font-size: 18px;
   font-weight: 600;
   -webkit-margin-after: .3em;
           margin-block-end: .3em;
 }
 
-body main .routes .Labels .labels-notes-container {
+.app main .routes .Labels .labels-notes-container {
   -webkit-margin-after: 3em;
           margin-block-end: 3em;
 }
 
-body main .routes .Labels .labels-notes-container .notes-container .note {
+.app main .routes .Labels .labels-notes-container .notes-container .note {
   -webkit-margin-start: 0;
           margin-inline-start: 0;
 }
 
-body main .routes .Labels .empty-labels {
+.app main .routes .Labels .empty-labels {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -668,23 +947,23 @@ body main .routes .Labels .empty-labels {
   padding-block: 5rem;
 }
 
-body main .routes .Labels .empty-labels i {
+.app main .routes .Labels .empty-labels i {
   color: #37383b;
   font-size: 100px;
 }
 
-body main .routes .Labels .empty-labels p {
+.app main .routes .Labels .empty-labels p {
   font-size: 23px;
   color: #aeafb3;
 }
 
-body main .routes .Archive .archive-header {
+.app main .routes .Archive .archive-header {
   margin-block: 0 .9em;
   padding-block: 0 .7em;
   border-bottom: 1px solid #99999a;
 }
 
-body main .routes .Archive .empty-archive {
+.app main .routes .Archive .empty-archive {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -702,17 +981,17 @@ body main .routes .Archive .empty-archive {
   padding-block: 5rem;
 }
 
-body main .routes .Archive .empty-archive i {
+.app main .routes .Archive .empty-archive i {
   color: #37383b;
   font-size: 150px;
 }
 
-body main .routes .Archive .empty-archive p {
+.app main .routes .Archive .empty-archive p {
   font-size: 23px;
   color: #aeafb3;
 }
 
-body main .routes .Trash .empty-trash {
+.app main .routes .Trash .empty-trash {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -730,12 +1009,12 @@ body main .routes .Trash .empty-trash {
   padding-block: 5rem;
 }
 
-body main .routes .Trash i {
+.app main .routes .Trash i {
   color: #37383b;
   font-size: 150px;
 }
 
-body main .routes .Trash p {
+.app main .routes .Trash p {
   font-size: 23px;
   color: #aeafb3;
 }

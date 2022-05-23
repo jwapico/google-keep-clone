@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
 
 import googleKeepLogo from "../assets/googleKeepLogo.png"
+import ThemeContext from '../ThemeContext';
 
-function Header({ toggleIsNavOpen, makeSearch, isSearching, searchTerm, endSearch }) {
+function Header({ toggleIsNavOpen, makeSearch, isSearching, searchTerm, endSearch, toggleIsDarkMode }) {
   const [searchQuery, setSearchQuery] = useState("")
   const searchInput = useRef(null)
+  const {isDarkMode} = React.useContext(ThemeContext)
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -14,7 +16,7 @@ function Header({ toggleIsNavOpen, makeSearch, isSearching, searchTerm, endSearc
   }
 
   return ( 
-    <header className='home__header'>
+    <header className={`home__header ${!isDarkMode ? "light-mode" : ""}`}>
         <div className="ham-logo-keep-container">
           <div className="ham-container">
             <svg onClick={toggleIsNavOpen} focusable="false" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
@@ -28,7 +30,12 @@ function Header({ toggleIsNavOpen, makeSearch, isSearching, searchTerm, endSearc
         </form>
         <div className='header-btns-container'>
           {isSearching && <button onClick={() => endSearch()}>Confirm</button>}
-          <i className="fa-solid fa-gear"></i>
+          <div className='toggler-container'>
+            <label className="switch">
+              <input type="checkbox"  onClick={() => toggleIsDarkMode()}/>
+              <span className="slider round"></span>
+            </label>
+          </div>
         </div>
       </header>
   );

@@ -10,8 +10,7 @@ import Labels from "./components/Labels"
 import Archive from "./components/Archive"
 import Trash from "./components/Trash"
 import Notes from "./components/Notes"
-
-
+import ThemeContext from "./ThemeContext"
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(true)
@@ -25,6 +24,7 @@ function App() {
   const [filteredNotes, setFilteredNotes] = useState([])
   const [isSearching, setIsSearching] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
+  const [isDarkMode, setIsDarkMode] = useState(false)
 
   // nav 
     function toggleIsNavOpen() {
@@ -102,102 +102,106 @@ function App() {
 
   
   // search/filtering
-  function makeSearch(text) {
-    setIsSearching(true)
-    setSearchTerm(text)
-    const loweredText = text.toLowerCase()
+    function makeSearch(text) {
+      setIsSearching(true)
+      setSearchTerm(text)
+      const loweredText = text.toLowerCase()
 
-    const filteredItems = notes.filter(note => note.title.toLowerCase().includes(loweredText) || note.noteText.toLowerCase().includes(loweredText) || note.labels.filter(label => label.toLowerCase().includes(loweredText)).length)
+      const filteredItems = notes.filter(note => note.title.toLowerCase().includes(loweredText) || note.noteText.toLowerCase().includes(loweredText) || note.labels.filter(label => label.toLowerCase().includes(loweredText)).length)
 
-    setFilteredNotes(filteredItems)
-  }
+      setFilteredNotes(filteredItems)
+    }
 
-  function endSearch() {
-    setIsSearching(false)
-  }
+    function endSearch() {
+      setIsSearching(false)
+    }
 
-  useEffect(() => {
-    const filteredItems = notes.filter(note => note.title.toLowerCase().includes(searchTerm.toLowerCase()) || note.noteText.toLowerCase().includes(searchTerm.toLowerCase()) || note.labels.filter(label => label.toLowerCase().includes(searchTerm.toLowerCase())).length)
-    setFilteredNotes(filteredItems)
-  }, [notes])
+    useEffect(() => {
+      const filteredItems = notes.filter(note => note.title.toLowerCase().includes(searchTerm.toLowerCase()) || note.noteText.toLowerCase().includes(searchTerm.toLowerCase()) || note.labels.filter(label => label.toLowerCase().includes(searchTerm.toLowerCase())).length)
+      setFilteredNotes(filteredItems)
+    }, [notes])
   // /search / filtering
+
+  
+  // theme
+      function toggleIsDarkMode() {
+        console.log("click")
+        setIsDarkMode(prevMode => !prevMode)
+      }
+  // /theme
  
   document.addEventListener("keydown", (e) => {if (e.key === "Escape") {setIsSearching(false)}})
 
   return (
-    <>
-      <Header toggleIsNavOpen={toggleIsNavOpen} makeSearch={makeSearch} isSearching={isSearching} searchTerm={searchTerm} endSearch={endSearch}/>
-
-      <main>
-        <NavSection
-          isNavOpen={isNavOpen}
-          linkValues={sectionLinks}
-          changeIsSelected={changeIsSelected}
-          onMouseOver={openNav}
-        />
-        <div className="routes">
-          <div className={`route ${sectionLinks.filter(link => link.isSelected)[0].text}`}>
-            <Routes>
-
-              <Route exact path="/" element={
-                <Notes 
-                  notes={isSearching ? filteredNotes : notes} 
-                  addNote={addNote} 
-                  deleteNote={deleteNote} 
-                  addLabel={addLabel}
-                  clearLabels={clearLabels}
-                  removeLabel={removeLabel}
-                  archiveNote={archiveNote}
-                  isSearching={isSearching}
+    <ThemeContext.Provider value={{isDarkMode, toggleIsDarkMode}}>
+      <div className={`app ${!isDarkMode ? "light-mode" : ""}`}>
+        <Header toggleIsNavOpen={toggleIsNavOpen} makeSearch={makeSearch} isSearching={isSearching} searchTerm={searchTerm} endSearch={endSearch} toggleIsDarkMode={toggleIsDarkMode}/>
+        <main>
+          <NavSection
+            isNavOpen={isNavOpen}
+            linkValues={sectionLinks}
+            changeIsSelected={changeIsSelected}
+            onMouseOver={openNav}
+          />
+          <div className="routes">
+            <div className={`route ${sectionLinks.filter(link => link.isSelected)[0].text}`}>
+              <Routes>
+                <Route exact path="/" element={
+                  <Notes
+                    notes={isSearching ? filteredNotes : notes}
+                    addNote={addNote}
+                    deleteNote={deleteNote}
+                    addLabel={addLabel}
+                    clearLabels={clearLabels}
+                    removeLabel={removeLabel}
+                    archiveNote={archiveNote}
+                    isSearching={isSearching}
+                    />}>
+                </Route>
+                <Route path="/labels" element={
+                  <Labels
+                    notes={isSearching ? filteredNotes : notes}
+                    addNote={addNote}
+                    deleteNote={deleteNote}
+                    addLabel={addLabel}
+                    clearLabels={clearLabels}
+                    removeLabel={removeLabel}
+                    archiveNote={archiveNote}
+                    isSearching={isSearching}
+                    />}>
+                </Route>
+                <Route path="/archive" element={
+                  <Archive
+                    notes={isSearching ? filteredNotes : notes}
+                    addNote={addNote}
+                    deleteNote={deleteNote}
+                    addLabel={addLabel}
+                    clearLabels={clearLabels}
+                    removeLabel={removeLabel}
+                    archiveNote={archiveNote}
+                    isSearching={isSearching}
                   />}>
-              </Route>
-
-              <Route path="/labels" element={
-                <Labels 
-                  notes={isSearching ? filteredNotes : notes}
-                  addNote={addNote} 
-                  deleteNote={deleteNote} 
-                  addLabel={addLabel}
-                  clearLabels={clearLabels}
-                  removeLabel={removeLabel}
-                  archiveNote={archiveNote}
-                  isSearching={isSearching}
+                </Route>
+                <Route path="/trash" element={
+                  <Trash
+                    notes={isSearching ? filteredNotes : notes}
+                    addNote={addNote}
+                    deleteNote={deleteNote}
+                    addLabel={addLabel}
+                    clearLabels={clearLabels}
+                    removeLabel={removeLabel}
+                    archiveNote={archiveNote}
+                    permaDeleteNote={permaDeleteNote}
+                    recoverNote={recoverNote}
+                    isSearching={isSearching}
                   />}>
-              </Route>
-
-              <Route path="/archive" element={
-                <Archive 
-                  notes={isSearching ? filteredNotes : notes}
-                  addNote={addNote} 
-                  deleteNote={deleteNote} 
-                  addLabel={addLabel}
-                  clearLabels={clearLabels}
-                  removeLabel={removeLabel}
-                  archiveNote={archiveNote}
-                  isSearching={isSearching}
-                />}>
-              </Route>
-
-              <Route path="/trash" element={
-                <Trash 
-                  notes={isSearching ? filteredNotes : notes}
-                  addNote={addNote} 
-                  deleteNote={deleteNote} 
-                  addLabel={addLabel}
-                  clearLabels={clearLabels}
-                  removeLabel={removeLabel}
-                  archiveNote={archiveNote}
-                  permaDeleteNote={permaDeleteNote}
-                  recoverNote={recoverNote}
-                  isSearching={isSearching}
-                />}>
-              </Route>
-
-            </Routes>
+                </Route>
+              </Routes>
+            </div>
           </div>
-        </div>
-      </main>
-    </>
+        </main>
+      </div>
+    </ThemeContext.Provider>
   );
 }
 
