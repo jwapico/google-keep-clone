@@ -716,6 +716,8 @@ html {
 
             &.open-modal {
               border: 1px solid rgba(255, 255, 255, 0.781);
+              position: relative;
+              z-index: 1;
             }
           }
 
@@ -730,7 +732,6 @@ html {
             .note {
               width: 46%;
               margin: 2%;
-              border: 1px solid red;
             }
           }
 

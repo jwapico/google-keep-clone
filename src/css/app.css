@@ -766,6 +766,8 @@ html.light-mode {
 
 .app main .routes .route .notes-container .note.open-modal {
   border: 1px solid rgba(255, 255, 255, 0.781);
+  position: relative;
+  z-index: 1;
 }
 
 @media only screen and (max-width: 2000px) {
@@ -779,7 +781,6 @@ html.light-mode {
   .app main .routes .route .notes-container .note {
     width: 46%;
     margin: 2%;
-    border: 1px solid red;
   }
 }
 
