@@ -32,7 +32,7 @@ function Trash(props) {
           : (
             <div className='empty-trash'>
               <p>no deleted items</p>
-              <i class="fa-solid fa-parachute-box"></i>
+              <i className="fa-solid fa-parachute-box"></i>
             </div>
           )
       }

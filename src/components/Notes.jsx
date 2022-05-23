@@ -8,7 +8,7 @@ function Notes(props) {
 
   return ( 
     <>
-      {isNoteFieldOpen ? <NoteField notes={notes} addNote={props.addNote} closeNoteField={() => setIsNoteFieldOpen(false)}/> : <input type="text" placeholder='Take a note...' className='take-a-note' onFocus={() => {setIsNoteFieldOpen(true)}}/>}
+      {isNoteFieldOpen ? <NoteField notes={notes} addNote={props.addNote} closeNoteField={() => setIsNoteFieldOpen(false)}/> : <input type="text" placeholder='Take a note...' className='take-a-note' disabled={props.isSearching} onFocus={() => {setIsNoteFieldOpen(true)}}/>}
       {notes.length && notes.filter(note => !note.isDeleted).length
         ? <div className='notes-container'>
             {notes.map((note, index) => (
