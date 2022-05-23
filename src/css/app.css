@@ -560,6 +560,11 @@ html.light-mode {
   transition: all .3s;
 }
 
+.app main .routes .route .notes-container .note:nth-child(4n + 1) {
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
+}
+
 .app main .routes .route .notes-container .note:hover {
   -webkit-box-shadow: 7px 7px 20px #00000098;
           box-shadow: 7px 7px 20px #00000098;
@@ -770,26 +775,6 @@ html.light-mode {
   z-index: 1;
 }
 
-@media only screen and (max-width: 2000px) {
-  .app main .routes .route .notes-container .note {
-    margin: 1%;
-    width: 31.3333%;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  .app main .routes .route .notes-container .note {
-    width: 46%;
-    margin: 2%;
-  }
-}
-
-@media only screen and (max-width: 750px) {
-  .app main .routes .route .notes-container .note {
-    width: 100%;
-  }
-}
-
 .app main .routes .route .notes-container h2, .app main .routes .route .notes-container p {
   margin: 0 0 1em 0;
 }
@@ -846,6 +831,35 @@ html.light-mode {
 .app main .routes .route .notes-container .icons.hidden {
   max-height: 0;
   opacity: 0;
+}
+
+@media only screen and (max-width: 2000px) {
+  .app main .routes .route .notes-container .note {
+    margin: 1%;
+    width: 31.3333%;
+  }
+  .app main .routes .route .notes-container .note:nth-child(3n + 1) {
+    -webkit-margin-start: 0;
+            margin-inline-start: 0;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .app main .routes .route .notes-container .note {
+    width: 46%;
+    margin: 2%;
+  }
+  .app main .routes .route .notes-container .note:nth-child(2n + 1) {
+    -webkit-margin-start: 0;
+            margin-inline-start: 0;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .app main .routes .route .notes-container .note {
+    width: 100%;
+    margin-inline: 0;
+  }
 }
 
 .app main .routes .Notes .take-a-note {

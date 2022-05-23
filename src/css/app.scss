@@ -547,6 +547,10 @@ html {
             position: relative;
             transition: all .3s;
 
+            &:nth-child(4n + 1) {
+              margin-inline-start: 0;
+            }
+
             &:hover {
               box-shadow: 7px 7px 20px #00000098;
               transform: translate(-4px, -4px);
@@ -721,26 +725,6 @@ html {
             }
           }
 
-          @include desktop {
-            .note {
-              margin: 1%;
-              width: 31.3333%;
-            }
-          }
-
-          @include tablet {
-            .note {
-              width: 46%;
-              margin: 2%;
-            }
-          }
-
-          @include phone {
-            .note {
-              width: 100%;
-            }
-          }
-
           h2, p {
             margin: 0 0 1em 0;
           }
@@ -787,6 +771,42 @@ html {
             &.hidden {
               max-height: 0;
               opacity: 0;
+            }
+          }
+        }
+
+        @include desktop {
+          .notes-container {
+            .note {
+              margin: 1%;
+              width: 31.3333%;
+
+              &:nth-child(3n + 1) {
+                margin-inline-start: 0;
+              }
+            }
+          }
+        }
+
+        @include tablet {
+          .notes-container {
+            .note {
+              width: 46%;
+              margin: 2%;
+
+              &:nth-child(2n + 1) {
+                margin-inline-start: 0;
+              }
+            }
+
+          }
+        }
+
+        @include phone {
+          .notes-container {
+            .note {
+              width: 100%;
+              margin-inline: 0;
             }
           }
         }
