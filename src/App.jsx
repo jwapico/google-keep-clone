@@ -127,14 +127,23 @@ function App() {
       function toggleIsDarkMode() {
         console.log("click")
         setIsDarkMode(prevMode => !prevMode)
+
       }
   // /theme
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.getElementById("html").classList.remove("light-mode")
+    } else {
+      document.getElementById("html").classList.add("light-mode")
+    }
+  }, [isDarkMode])
  
   document.addEventListener("keydown", (e) => {if (e.key === "Escape") {setIsSearching(false)}})
 
   return (
     <ThemeContext.Provider value={{isDarkMode, toggleIsDarkMode}}>
-      <div className={`app ${!isDarkMode ? "light-mode" : ""}`}>
+      <div className={`app ${!isDarkMode ? "light-mode" : " "}`}>
         <Header toggleIsNavOpen={toggleIsNavOpen} makeSearch={makeSearch} isSearching={isSearching} searchTerm={searchTerm} endSearch={endSearch} toggleIsDarkMode={toggleIsDarkMode}/>
         <main>
           <NavSection
