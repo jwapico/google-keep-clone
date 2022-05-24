@@ -51,6 +51,7 @@ function Labels(props) {
                   </div  >
                 )
               }
+              return null
             })}
           </>
         : 

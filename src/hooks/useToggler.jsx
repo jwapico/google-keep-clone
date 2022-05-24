@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function useToggler(initalState) {
   const [isToggled, setIsToggled] = useState(initalState)

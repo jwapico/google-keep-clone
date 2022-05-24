@@ -535,7 +535,7 @@ html {
         .notes-container {
           display: flex;
           flex-wrap: wrap;
-          align-items: start;
+          align-items: flex-start;
 
           .note {
             border: 1px solid #5f6368;
