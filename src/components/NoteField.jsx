@@ -7,6 +7,8 @@ function NoteField(props) {
   const titleInput = useRef()
   useEffect(() => {titleInput.current.focus()}, [])
 
+  // is there a better way to implement an id? I feel like using the length of notes
+  // is fragile, but it seems to work here
   function onSubmit(event) {
     event.preventDefault()
     props.closeNoteField()
@@ -28,11 +30,25 @@ function NoteField(props) {
 
   return ( 
     <form className='note-field'>
-      <input type="text" placeholder='Title' ref={titleInput} value={title} onChange={e => setTitle(e.target.value)}/>
-      <textarea cols="30" rows="1" placeholder='Take a note...' className='take-note' value={noteText} onChange={e => setNoteText(e.target.value)}></textarea>
+      <input 
+        type="text" 
+        placeholder='Title' 
+        ref={titleInput} 
+        value={title} 
+        onChange={e => setTitle(e.target.value)}
+      />
+      <textarea 
+        cols="30" 
+        rows="1" 
+        placeholder='Take a note...' 
+        className='take-note' 
+        value={noteText} 
+        onChange={e => setNoteText(e.target.value)}>
+      </textarea>
+      
       <div className="note-field-buttons">
-        <button type='submit' onClick={(e) => onSubmit(e)}>Create Note</button>
-        <button onClick={(e) => onClose(e)}>Close</button>
+        <button type='submit' onClick={e => onSubmit(e)}>Create Note</button>
+        <button onClick={e => onClose(e)}>Close</button>
       </div>
     </form>
   );
